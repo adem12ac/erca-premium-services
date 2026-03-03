@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { AnimatedSection } from "./AnimatedSection";
 
 interface ContactFormProps {
@@ -97,7 +98,7 @@ export const ContactForm = ({ prefilledProduct, variant = "default" }: ContactFo
         <label className="flex items-start gap-3 cursor-pointer">
           <input required type="checkbox" name="consent" className="mt-1 h-4 w-4 rounded border-input accent-primary" />
           <span className="text-xs text-muted-foreground leading-relaxed">
-            Ich stimme zu, dass meine Angaben zur Kontaktaufnahme und für Rückfragen gespeichert werden. Weitere Informationen finden Sie in unserer <a href="/datenschutz" className="underline">Datenschutzerklärung</a>. *
+            Ich stimme zu, dass meine Angaben zur Kontaktaufnahme und für Rückfragen gespeichert werden. Weitere Informationen finden Sie in unserer <Link to="/datenschutz" className="underline hover:text-foreground">Datenschutzerklärung</Link>. *
           </span>
         </label>
         <button
