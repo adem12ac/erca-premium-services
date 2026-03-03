@@ -6,6 +6,8 @@ import { Link } from "react-router-dom";
 import { ArrowRight, Shield, Clock, Award, Wrench, Building2, Trash2, Accessibility, Truck, CheckCircle2, Phone } from "lucide-react";
 import renovationImg from "@/assets/renovation.jpeg";
 import buildingImg from "@/assets/building.jpeg";
+import hausmeisterImg from "@/assets/hausmeister.jpg";
+import entruempelungImg from "@/assets/entruempelung.jpg";
 
 const stats = [
   { value: "30+", label: "Jahre Erfahrung" },
@@ -26,7 +28,7 @@ const services = [
     icon: Building2,
     title: "Objektbetreuung / Hausmeisterservice",
     desc: "Technisches Gebäudemanagement, regelmäßige Begehungen, Winterdienst und Grünanlagenpflege – zuverlässig und dokumentiert.",
-    image: buildingImg,
+    image: hausmeisterImg,
   },
   {
     icon: Wrench,
@@ -38,7 +40,7 @@ const services = [
     icon: Trash2,
     title: "Entsorgung & Entrümpelung",
     desc: "Fachgerechte Entrümpelung und Entsorgung für Privat und Gewerbe – schnell, sauber und umweltgerecht.",
-    image: buildingImg,
+    image: entruempelungImg,
   },
   {
     icon: Accessibility,
@@ -50,7 +52,7 @@ const services = [
     icon: Truck,
     title: "Kleiner Umzugsservice",
     desc: "Unkomplizierter Umzugsservice für Privatkunden – innerhalb Essen und Umgebung.",
-    image: buildingImg,
+    image: entruempelungImg,
   },
 ];
 
