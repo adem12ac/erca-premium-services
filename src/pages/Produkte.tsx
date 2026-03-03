@@ -6,9 +6,10 @@ import { ArrowRight } from "lucide-react";
 const products = [
   { name: "Hausmeister-Paket Basis", desc: "Regelmäßige Begehungen, Winterdienst, Grünanlagenpflege und Kleinreparaturen für Ihre Liegenschaft.", price: "ab 299€/Monat" },
   { name: "Hausmeister-Paket Premium", desc: "Basis-Paket plus technisches Management, Brandschutzprüfung, Aufzugswartung und priorisierter Notdienst.", price: "ab 599€/Monat" },
-  { name: "Sanierung Komplett", desc: "Vollständige Wohnungssanierung nach Mieterwechsel inkl. Malerarbeiten, Böden und Sanitär.", price: "ab 2.999€" },
-  { name: "Badsanierung", desc: "Komplettumbau Ihres Badezimmers – von der Planung bis zur schlüsselfertigen Übergabe.", price: "ab 4.999€" },
-  { name: "Heizungsmodernisierung", desc: "Installation und Modernisierung Ihrer Heizungsanlage inkl. hydraulischem Abgleich.", price: "auf Anfrage" },
+  { name: "Sanierung Komplett", desc: "Vollständige Wohnungssanierung nach Mieterwechsel inkl. Malerarbeiten, Böden und Bad.", price: "ab 2.999€" },
+  { name: "Barrierefreie Badsanierung", desc: "Kompletter barrierefreier Badumbau nach DIN 18040 – von der Planung bis zur schlüsselfertigen Übergabe.", price: "ab 4.999€" },
+  { name: "Entrümpelung & Entsorgung", desc: "Fachgerechte Entrümpelung und umweltgerechte Entsorgung – für Privat und Gewerbe.", price: "auf Anfrage" },
+  { name: "Kleiner Umzugsservice", desc: "Unkomplizierter Umzugsservice für Privatkunden innerhalb Essen und Umgebung.", price: "auf Anfrage" },
   { name: "Objektbetreuung", desc: "Full-Service-Betreuung für Ihr Immobilienportfolio mit dokumentierter Berichterstattung.", price: "auf Anfrage" },
 ];
 
@@ -40,7 +41,7 @@ const Produkte = () => {
                     onClick={() => setSelectedProduct(p.name)}
                     className="mt-4 inline-flex items-center justify-center gap-2 rounded-lg bg-primary px-5 py-3 text-sm font-semibold text-primary-foreground transition-opacity hover:opacity-90"
                   >
-                    Angebot anfragen <ArrowRight className="h-4 w-4" />
+                    Holen Sie sich jetzt Ihr Angebot <ArrowRight className="h-4 w-4" />
                   </button>
                 </div>
               </AnimatedSection>

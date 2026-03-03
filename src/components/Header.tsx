@@ -9,7 +9,6 @@ const navItems = [
   { label: "Geschäftskunden", href: "/geschaeftskunden" },
   { label: "Privatkunden", href: "/privatkunden" },
   { label: "Produkte & Preise", href: "/produkte" },
-  { label: "Referenzen", href: "/referenzen" },
   { label: "Über uns", href: "/ueber-uns" },
   { label: "Kontakt", href: "/kontakt" },
 ];
@@ -25,7 +24,6 @@ export const Header = () => {
           <img src={logo} alt="ERCA Dienstleistungen" className="h-12 w-auto" />
         </Link>
 
-        {/* Desktop Nav */}
         <nav className="hidden items-center gap-1 lg:flex">
           {navItems.map((item) => (
             <Link
@@ -42,7 +40,7 @@ export const Header = () => {
 
         <div className="hidden items-center gap-3 lg:flex">
           <a
-            href="tel:+4915216399326"
+            href="tel:+4915212971388"
             className="inline-flex items-center gap-2 rounded-lg bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground transition-opacity hover:opacity-90"
           >
             <Phone className="h-4 w-4" />
@@ -50,13 +48,11 @@ export const Header = () => {
           </a>
         </div>
 
-        {/* Mobile toggle */}
-        <button onClick={() => setOpen(!open)} className="lg:hidden" aria-label="Menü">
+        <button onClick={() => setOpen(!open)} className="lg:hidden" aria-label="Menü öffnen/schließen">
           {open ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
         </button>
       </div>
 
-      {/* Mobile Nav */}
       {open && (
         <div className="border-t border-border bg-background lg:hidden">
           <nav className="container flex flex-col gap-1 py-4">
@@ -73,11 +69,11 @@ export const Header = () => {
               </Link>
             ))}
             <a
-              href="tel:+4915216399326"
+              href="tel:+4915212971388"
               className="mt-2 inline-flex items-center justify-center gap-2 rounded-lg bg-primary px-5 py-3 text-sm font-semibold text-primary-foreground"
             >
               <Phone className="h-4 w-4" />
-              +49 152 16 39 93 26
+              +49 152 1297 1388
             </a>
           </nav>
         </div>

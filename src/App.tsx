@@ -11,7 +11,7 @@ import Leistungen from "./pages/Leistungen";
 import Geschaeftskunden from "./pages/Geschaeftskunden";
 import Privatkunden from "./pages/Privatkunden";
 import Produkte from "./pages/Produkte";
-import Referenzen from "./pages/Referenzen";
+
 import UeberUns from "./pages/UeberUns";
 import Kontakt from "./pages/Kontakt";
 import Impressum from "./pages/Impressum";
@@ -34,7 +34,7 @@ const App = () => (
             <Route path="/geschaeftskunden" element={<Geschaeftskunden />} />
             <Route path="/privatkunden" element={<Privatkunden />} />
             <Route path="/produkte" element={<Produkte />} />
-            <Route path="/referenzen" element={<Referenzen />} />
+            
             <Route path="/ueber-uns" element={<UeberUns />} />
             <Route path="/kontakt" element={<Kontakt />} />
             <Route path="/impressum" element={<Impressum />} />

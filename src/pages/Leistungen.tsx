@@ -1,38 +1,44 @@
 import { AnimatedSection } from "@/components/AnimatedSection";
-import { Building2, Thermometer, Home, Wrench, CheckCircle2 } from "lucide-react";
+import { Building2, Wrench, Trash2, Accessibility, Truck, CheckCircle2 } from "lucide-react";
 import { Link } from "react-router-dom";
 import renovationImg from "@/assets/renovation.jpeg";
-import heatingImg from "@/assets/heating.jpeg";
 import buildingImg from "@/assets/building.jpeg";
 
 const services = [
   {
     icon: Building2,
-    title: "Sanierung & Renovierung",
+    title: "Objektbetreuung / Hausmeisterservice",
+    desc: "Als erfahrener Objektbetreuer übernehmen wir die Verantwortung für den technischen und infrastrukturellen Betrieb Ihrer Immobilien – transparent, zuverlässig und lückenlos dokumentiert.",
+    image: buildingImg,
+    features: ["Technisches Gebäudemanagement", "Regelmäßige Begehungen & Dokumentation", "Grünanlagenpflege & Außenanlagen", "Winterdienst & Streupflicht", "Sicherheitskontrollgänge", "Kleinreparaturen & Instandhaltung"],
+  },
+  {
+    icon: Wrench,
+    title: "Sanierungen & Renovierungen",
     desc: "Von der Schönheitsrenovierung bis zur Komplettsanierung bieten wir das vollständige Handwerks-Paket. Wir koordinieren alle Gewerke und sind Ihr einziger Ansprechpartner.",
     image: renovationImg,
     features: ["Wohnungssanierung nach Mieterwechsel", "Schimmel- & Feuchtigkeitsbeseitigung", "Malerarbeiten & Bodenbeläge", "Badsanierung komplett", "Küchen- & Innenausbau"],
   },
   {
-    icon: Thermometer,
-    title: "Heizung & Sanitär",
-    desc: "Von der Heizungsinstallation über Badsanierungen bis zum 24h-Notdienst – wir sorgen für funktionsfähige und effiziente Haustechnik.",
-    image: heatingImg,
-    features: ["Heizungsinstallation & -modernisierung", "Wartung & Reparatur aller Anlagen", "Komplette Badsanierungen", "Sanitärinstallationen aller Art", "24h-Notdienst bei Rohrbruch"],
+    icon: Trash2,
+    title: "Entsorgung & Entrümpelung",
+    desc: "Fachgerechte Entrümpelung und Entsorgung für Privatpersonen, Hausverwaltungen und Gewerbetreibende – schnell, sauber und umweltgerecht.",
+    image: buildingImg,
+    features: ["Haushaltsauflösungen", "Kellerentrümpelung", "Sperrmüllentsorgung", "Gewerbeentrümpelung", "Umweltgerechte Entsorgung"],
   },
   {
-    icon: Home,
-    title: "Objektbetreuung",
-    desc: "Als erfahrener Objektbetreuer übernehmen wir die Verantwortung für den technischen und infrastrukturellen Betrieb Ihrer Immobilien.",
-    image: buildingImg,
-    features: ["Technisches Gebäudemanagement", "Regelmäßige Begehungen & Dokumentation", "Koordination von Handwerkern", "Brandschutz & Sicherheitstechnik", "Aufzugüberwachung & -wartung"],
+    icon: Accessibility,
+    title: "Barrierefreie Sanierungen",
+    desc: "Wir schaffen barrierefreie Wohn- und Lebensräume nach DIN 18040 – für Pflegeheime, Seniorenwohnanlagen und Privatimmobilien.",
+    image: renovationImg,
+    features: ["Barrierefreie Badsanierung", "Türverbreiterungen & Rampen", "Bodengleiche Duschen", "Haltegriffe & Stützsysteme", "Beratung nach DIN 18040"],
   },
   {
-    icon: Wrench,
-    title: "Gebäudeservice",
-    desc: "Unser Gebäudeservice umfasst alle Leistungen für den reibungslosen Betrieb Ihrer Liegenschaft.",
+    icon: Truck,
+    title: "Kleiner Umzugsservice für Privat",
+    desc: "Unkomplizierter Umzugsservice für Privatkunden innerhalb Essen und Umgebung. Wir packen an, damit Sie es nicht müssen.",
     image: buildingImg,
-    features: ["Grünanlagenpflege & Außenanlagen", "Winterdienst & Streupflicht", "Kleinreparaturen & Instandhaltung", "Sicherheitskontrollgänge", "Entrümpelungen & kleine Umzüge"],
+    features: ["Möbeltransport innerhalb der Region", "Auf- und Abbau von Möbeln", "Transportverpackung", "Seniorenumzüge mit besonderer Sorgfalt", "Flexible Terminvereinbarung"],
   },
 ];
 
@@ -44,7 +50,7 @@ const Leistungen = () => (
         <AnimatedSection>
           <p className="text-sm font-semibold uppercase tracking-widest text-green">Leistungen</p>
           <h1 className="mt-3 font-display text-4xl font-extrabold text-foreground sm:text-5xl">Unser Leistungsspektrum</h1>
-          <p className="mx-auto mt-4 max-w-2xl text-muted-foreground">Vier Fachbereiche, ein kompetenter Partner. Alles aus einer Hand für Ihre Immobilie.</p>
+          <p className="mx-auto mt-4 max-w-2xl text-muted-foreground">Fünf Fachbereiche, ein kompetenter Partner. Alles aus einer Hand für Ihre Immobilie.</p>
         </AnimatedSection>
       </div>
     </section>
@@ -69,12 +75,12 @@ const Leistungen = () => (
                 ))}
               </ul>
               <Link to="/kontakt" className="mt-8 inline-flex rounded-lg bg-primary px-6 py-3 font-semibold text-primary-foreground transition-opacity hover:opacity-90">
-                Jetzt anfragen
+                Holen Sie sich jetzt Ihr Angebot
               </Link>
             </AnimatedSection>
             <AnimatedSection delay={0.2} className={i % 2 === 1 ? "lg:[direction:ltr]" : ""}>
               <div className="overflow-hidden rounded-2xl">
-                <img src={s.image} alt={s.title} className="h-full w-full object-cover" />
+                <img src={s.image} alt={s.title} loading="lazy" className="h-full w-full object-cover" />
               </div>
             </AnimatedSection>
           </div>

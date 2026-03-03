@@ -9,7 +9,7 @@ const Kontakt = () => (
       <div className="container text-center">
         <AnimatedSection>
           <p className="text-sm font-semibold uppercase tracking-widest text-green">Kontakt</p>
-          <h1 className="mt-3 font-display text-4xl font-extrabold text-foreground sm:text-5xl">Wir freuen uns auf Ihre Anfrage</h1>
+          <h1 className="mt-3 font-display text-4xl font-extrabold text-foreground sm:text-5xl">Holen Sie sich jetzt Ihr Angebot</h1>
           <p className="mx-auto mt-4 max-w-2xl text-muted-foreground">Haben Sie Fragen oder möchten ein individuelles Angebot? Wir sind für Sie da.</p>
         </AnimatedSection>
       </div>
@@ -22,7 +22,7 @@ const Kontakt = () => (
             <AnimatedSection>
               {[
                 { icon: MapPin, label: "Adresse", value: "Juliusstraße 21, 45128 Essen" },
-                { icon: Phone, label: "Telefon", value: "+49 152 16 39 93 26", href: "tel:+4915216399326" },
+                { icon: Phone, label: "Telefon", value: "+49 152 1297 1388", href: "tel:+4915212971388" },
                 { icon: Mail, label: "E-Mail", value: "info@erca-service.de", href: "mailto:info@erca-service.de" },
                 { icon: Clock, label: "Öffnungszeiten", value: "Mo–Fr: 08:00–17:00 Uhr" },
               ].map((item) => (
@@ -46,7 +46,7 @@ const Kontakt = () => (
                 </div>
                 <div>
                   <p className="text-xs font-semibold uppercase tracking-wider text-accent">24h Notdienst</p>
-                  <a href="tel:+4915216399326" className="font-bold text-foreground">+49 152 16 39 93 26</a>
+                  <a href="tel:+4915212971388" className="font-bold text-foreground">+49 152 1297 1388</a>
                 </div>
               </div>
               <WhatsAppButton label="Über WhatsApp kontaktieren" className="w-full justify-center" />
