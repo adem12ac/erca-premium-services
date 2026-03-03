@@ -62,6 +62,29 @@ const Kontakt = () => (
         </div>
       </div>
     </section>
+
+    <section className="py-20 bg-section-alt">
+      <div className="container">
+        <AnimatedSection className="text-center mb-10">
+          <p className="text-sm font-semibold uppercase tracking-widest text-green">Standort</p>
+          <h2 className="mt-3 font-display text-3xl font-extrabold text-foreground sm:text-4xl">So finden Sie uns</h2>
+          <p className="mx-auto mt-4 max-w-2xl text-muted-foreground">Juliusstraße 21, 45128 Essen – zentral gelegen und gut erreichbar.</p>
+        </AnimatedSection>
+        <div className="overflow-hidden rounded-2xl border border-border shadow-card">
+          <iframe
+            title="ERCA Dienstleistungen Standort – Juliusstraße 21, 45128 Essen"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2488.5!2d7.0069!3d51.4484!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47b8c2c0e0e0e0e1%3A0x0!2sJuliusstra%C3%9Fe%2021%2C%2045128%20Essen!5e0!3m2!1sde!2sde!4v1700000000000"
+            width="100%"
+            height="450"
+            style={{ border: 0 }}
+            allowFullScreen
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+            className="w-full"
+          />
+        </div>
+      </div>
+    </section>
   </div>
 );
 
