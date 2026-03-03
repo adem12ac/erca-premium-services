@@ -5,9 +5,10 @@ import { HeroSlider } from "@/components/HeroSlider";
 import { Link } from "react-router-dom";
 import { ArrowRight, Shield, Clock, Award, Wrench, Building2, Trash2, Accessibility, Truck, CheckCircle2, Phone } from "lucide-react";
 import renovationImg from "@/assets/renovation.jpeg";
-import buildingImg from "@/assets/building.jpeg";
 import hausmeisterImg from "@/assets/hausmeister.jpg";
 import entruempelungImg from "@/assets/entruempelung.jpg";
+import umzugImg from "@/assets/umzugsservice.jpg";
+import barrierefreiImg from "@/assets/barrierefrei.jpg";
 
 const stats = [
   { value: "30+", label: "Jahre Erfahrung" },
@@ -46,13 +47,13 @@ const services = [
     icon: Accessibility,
     title: "Barrierefreie Sanierungen",
     desc: "Barrierefreie Umbauten nach DIN 18040 – für Pflegeheime, Seniorenwohnanlagen und Privatimmobilien.",
-    image: renovationImg,
+    image: barrierefreiImg,
   },
   {
     icon: Truck,
-    title: "Kleiner Umzugsservice",
+    title: "Umzugsservice",
     desc: "Unkomplizierter Umzugsservice für Privatkunden – innerhalb Essen und Umgebung.",
-    image: entruempelungImg,
+    image: umzugImg,
   },
 ];
 

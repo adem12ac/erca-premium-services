@@ -9,7 +9,7 @@ const products = [
   { name: "Sanierung Komplett", desc: "Vollständige Wohnungssanierung nach Mieterwechsel inkl. Malerarbeiten, Böden und Bad.", price: "ab 2.999€" },
   { name: "Barrierefreie Badsanierung", desc: "Kompletter barrierefreier Badumbau nach DIN 18040 – von der Planung bis zur schlüsselfertigen Übergabe.", price: "ab 4.999€" },
   { name: "Entrümpelung & Entsorgung", desc: "Fachgerechte Entrümpelung und umweltgerechte Entsorgung – für Privat und Gewerbe.", price: "auf Anfrage" },
-  { name: "Kleiner Umzugsservice", desc: "Unkomplizierter Umzugsservice für Privatkunden innerhalb Essen und Umgebung.", price: "auf Anfrage" },
+  { name: "Umzugsservice", desc: "Unkomplizierter Umzugsservice für Privatkunden innerhalb Essen und Umgebung.", price: "auf Anfrage" },
   { name: "Objektbetreuung", desc: "Full-Service-Betreuung für Ihr Immobilienportfolio mit dokumentierter Berichterstattung.", price: "auf Anfrage" },
 ];
 

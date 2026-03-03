@@ -22,7 +22,7 @@ export const Footer = () => (
             <li><Link to="/leistungen" className="hover:opacity-100 transition-opacity">Sanierungen & Renovierungen</Link></li>
             <li><Link to="/leistungen" className="hover:opacity-100 transition-opacity">Entsorgung & Entrümpelung</Link></li>
             <li><Link to="/leistungen" className="hover:opacity-100 transition-opacity">Barrierefreie Sanierungen</Link></li>
-            <li><Link to="/leistungen" className="hover:opacity-100 transition-opacity">Kleiner Umzugsservice</Link></li>
+            <li><Link to="/leistungen" className="hover:opacity-100 transition-opacity">Umzugsservice</Link></li>
           </ul>
         </div>
         <div>

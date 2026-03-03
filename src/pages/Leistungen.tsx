@@ -2,9 +2,10 @@ import { AnimatedSection } from "@/components/AnimatedSection";
 import { Building2, Wrench, Trash2, Accessibility, Truck, CheckCircle2 } from "lucide-react";
 import { Link } from "react-router-dom";
 import renovationImg from "@/assets/renovation.jpeg";
-import buildingImg from "@/assets/building.jpeg";
 import hausmeisterImg from "@/assets/hausmeister.jpg";
 import entruempelungImg from "@/assets/entruempelung.jpg";
+import umzugImg from "@/assets/umzugsservice.jpg";
+import barrierefreiImg from "@/assets/barrierefrei.jpg";
 
 const services = [
   {
@@ -32,14 +33,14 @@ const services = [
     icon: Accessibility,
     title: "Barrierefreie Sanierungen",
     desc: "Wir schaffen barrierefreie Wohn- und Lebensräume nach DIN 18040 – für Pflegeheime, Seniorenwohnanlagen und Privatimmobilien.",
-    image: renovationImg,
+    image: barrierefreiImg,
     features: ["Barrierefreie Badsanierung", "Türverbreiterungen & Rampen", "Bodengleiche Duschen", "Haltegriffe & Stützsysteme", "Beratung nach DIN 18040"],
   },
   {
     icon: Truck,
-    title: "Kleiner Umzugsservice für Privat",
+    title: "Umzugsservice",
     desc: "Unkomplizierter Umzugsservice für Privatkunden innerhalb Essen und Umgebung. Wir packen an, damit Sie es nicht müssen.",
-    image: entruempelungImg,
+    image: umzugImg,
     features: ["Möbeltransport innerhalb der Region", "Auf- und Abbau von Möbeln", "Transportverpackung", "Seniorenumzüge mit besonderer Sorgfalt", "Flexible Terminvereinbarung"],
   },
 ];

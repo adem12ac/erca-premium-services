@@ -6,6 +6,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { WhatsAppFloat } from "@/components/WhatsAppButton";
+import { CookieBanner } from "@/components/CookieBanner";
 import Index from "./pages/Index";
 import Leistungen from "./pages/Leistungen";
 import Geschaeftskunden from "./pages/Geschaeftskunden";
@@ -44,6 +45,7 @@ const App = () => (
         </main>
         <Footer />
         <WhatsAppFloat />
+        <CookieBanner />
       </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>
