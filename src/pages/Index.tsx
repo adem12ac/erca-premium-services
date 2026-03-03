@@ -1,10 +1,10 @@
 import { AnimatedSection } from "@/components/AnimatedSection";
 import { WhatsAppButton } from "@/components/WhatsAppButton";
 import { ContactForm } from "@/components/ContactForm";
+import { HeroSlider } from "@/components/HeroSlider";
 import { Link } from "react-router-dom";
-import { ArrowRight, Shield, Clock, Award, Wrench, Building2, Thermometer, Home, CheckCircle2, Phone } from "lucide-react";
+import { ArrowRight, Shield, Clock, Award, Wrench, Building2, Trash2, Accessibility, Truck, CheckCircle2, Phone } from "lucide-react";
 import renovationImg from "@/assets/renovation.jpeg";
-import heatingImg from "@/assets/heating.jpeg";
 import buildingImg from "@/assets/building.jpeg";
 
 const stats = [
@@ -24,26 +24,32 @@ const trustBadges = [
 const services = [
   {
     icon: Building2,
-    title: "Sanierung & Renovierung",
-    desc: "Von der Schönheitsrenovierung bis zur Komplettsanierung – termingerecht und budgettreu.",
-    image: renovationImg,
-  },
-  {
-    icon: Thermometer,
-    title: "Heizung & Sanitär",
-    desc: "Heizungsinstallation, Badsanierung und 24h-Notdienst. Qualifiziert und normgerecht.",
-    image: heatingImg,
-  },
-  {
-    icon: Home,
-    title: "Objektbetreuung",
-    desc: "Technisches Gebäudemanagement, Begehungen und Dokumentation – transparent und zuverlässig.",
+    title: "Objektbetreuung / Hausmeisterservice",
+    desc: "Technisches Gebäudemanagement, regelmäßige Begehungen, Winterdienst und Grünanlagenpflege – zuverlässig und dokumentiert.",
     image: buildingImg,
   },
   {
     icon: Wrench,
-    title: "Gebäudeservice",
-    desc: "Grünanlagenpflege, Winterdienst, Kleinreparaturen und Sicherheitskontrollgänge.",
+    title: "Sanierungen & Renovierungen",
+    desc: "Von der Schönheitsrenovierung bis zur Komplettsanierung – termingerecht und budgettreu. Alles aus einer Hand.",
+    image: renovationImg,
+  },
+  {
+    icon: Trash2,
+    title: "Entsorgung & Entrümpelung",
+    desc: "Fachgerechte Entrümpelung und Entsorgung für Privat und Gewerbe – schnell, sauber und umweltgerecht.",
+    image: buildingImg,
+  },
+  {
+    icon: Accessibility,
+    title: "Barrierefreie Sanierungen",
+    desc: "Barrierefreie Umbauten nach DIN 18040 – für Pflegeheime, Seniorenwohnanlagen und Privatimmobilien.",
+    image: renovationImg,
+  },
+  {
+    icon: Truck,
+    title: "Kleiner Umzugsservice",
+    desc: "Unkomplizierter Umzugsservice für Privatkunden – innerhalb Essen und Umgebung.",
     image: buildingImg,
   },
 ];
@@ -51,41 +57,7 @@ const services = [
 const Index = () => {
   return (
     <div className="flex flex-col">
-      {/* Hero */}
-      <section className="relative flex min-h-[90vh] items-center overflow-hidden pt-20">
-        <div className="absolute inset-0 -z-10">
-          <img src={renovationImg} alt="" className="h-full w-full object-cover" />
-          <div className="absolute inset-0 bg-gradient-to-r from-foreground/90 via-foreground/70 to-foreground/30" />
-        </div>
-        <div className="container relative z-10 py-20">
-          <AnimatedSection>
-            <p className="mb-4 inline-flex items-center gap-2 rounded-full border border-primary-foreground/20 bg-primary-foreground/10 px-4 py-1.5 text-sm font-medium text-primary-foreground backdrop-blur-sm">
-              <Award className="h-4 w-4" /> Über 30 Jahre Expertise · Essen & Region
-            </p>
-            <h1 className="max-w-3xl font-display text-4xl font-extrabold leading-[1.1] text-primary-foreground sm:text-5xl lg:text-6xl">
-              Ihr zuverlässiger Partner für erstklassige Immobilienbetreuung
-            </h1>
-            <p className="mt-6 max-w-xl text-lg leading-relaxed text-primary-foreground/80">
-              Von Sanierung über Heizung & Sanitär bis zur Objektbetreuung – ERCA Dienstleistungen liefert Handwerksqualität auf höchstem Niveau. Alles aus einer Hand.
-            </p>
-            <div className="mt-8 flex flex-wrap gap-4">
-              <Link
-                to="/kontakt"
-                className="inline-flex items-center gap-2 rounded-lg bg-accent px-7 py-3.5 font-semibold text-accent-foreground transition-opacity hover:opacity-90"
-              >
-                Kostenloses Angebot <ArrowRight className="h-4 w-4" />
-              </Link>
-              <WhatsAppButton label="WhatsApp Chat" />
-              <Link
-                to="/leistungen"
-                className="inline-flex items-center gap-2 rounded-lg border border-primary-foreground/30 px-7 py-3.5 font-semibold text-primary-foreground backdrop-blur-sm transition-colors hover:bg-primary-foreground/10"
-              >
-                Leistungen entdecken
-              </Link>
-            </div>
-          </AnimatedSection>
-        </div>
-      </section>
+      <HeroSlider />
 
       {/* Stats */}
       <section className="border-b border-border bg-background">
@@ -117,25 +89,25 @@ const Index = () => {
           <AnimatedSection className="text-center">
             <p className="text-sm font-semibold uppercase tracking-widest text-green">Unser Leistungsspektrum</p>
             <h2 className="mt-3 font-display text-3xl font-extrabold text-foreground sm:text-4xl">
-              Vier Fachbereiche. Ein kompetenter Partner.
+              Fünf Fachbereiche. Ein kompetenter Partner.
             </h2>
             <p className="mx-auto mt-4 max-w-2xl text-muted-foreground">
               Wir bieten ein vollständiges Dienstleistungsportfolio rund um Ihre Immobilie – von der täglichen Betreuung bis zur umfassenden Sanierung.
             </p>
           </AnimatedSection>
-          <div className="mt-14 grid gap-8 sm:grid-cols-2">
+          <div className="mt-14 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
             {services.map((s, i) => (
               <AnimatedSection key={s.title} delay={i * 0.1}>
-                <div className="group overflow-hidden rounded-2xl border border-border bg-card shadow-card transition-all hover:shadow-card-hover">
+                <div className="group overflow-hidden rounded-2xl border border-border bg-card shadow-card transition-all hover:shadow-card-hover h-full flex flex-col">
                   <div className="aspect-[16/9] overflow-hidden">
-                    <img src={s.image} alt={s.title} className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                    <img src={s.image} alt={s.title} loading="lazy" className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
                   </div>
-                  <div className="p-6">
-                    <div className="mb-3 inline-flex items-center justify-center rounded-lg bg-primary/10 p-2.5">
+                  <div className="p-6 flex flex-col flex-1">
+                    <div className="mb-3 inline-flex items-center justify-center rounded-lg bg-primary/10 p-2.5 w-fit">
                       <s.icon className="h-5 w-5 text-primary" />
                     </div>
                     <h3 className="font-display text-xl font-bold text-foreground">{s.title}</h3>
-                    <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{s.desc}</p>
+                    <p className="mt-2 flex-1 text-sm leading-relaxed text-muted-foreground">{s.desc}</p>
                     <Link to="/leistungen" className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-primary hover:underline">
                       Mehr erfahren <ArrowRight className="h-4 w-4" />
                     </Link>
@@ -161,9 +133,6 @@ const Index = () => {
             <div className="mt-8 flex flex-wrap justify-center gap-4">
               <Link to="/geschaeftskunden" className="inline-flex items-center gap-2 rounded-lg bg-accent px-7 py-3.5 font-semibold text-accent-foreground transition-opacity hover:opacity-90">
                 Partnerschaft anfragen <ArrowRight className="h-4 w-4" />
-              </Link>
-              <Link to="/referenzen" className="inline-flex items-center gap-2 rounded-lg border border-primary-foreground/20 px-7 py-3.5 font-semibold text-primary-foreground transition-colors hover:bg-primary-foreground/10">
-                Referenzen ansehen
               </Link>
             </div>
           </AnimatedSection>
@@ -201,7 +170,7 @@ const Index = () => {
             <AnimatedSection>
               <p className="text-sm font-semibold uppercase tracking-widest text-green">Kontakt</p>
               <h2 className="mt-3 font-display text-3xl font-extrabold text-foreground sm:text-4xl">
-                Wir freuen uns auf Ihre Anfrage
+                Holen Sie sich jetzt Ihr Angebot
               </h2>
               <p className="mt-4 text-muted-foreground leading-relaxed">
                 Haben Sie Fragen zu unseren Dienstleistungen oder möchten Sie ein individuelles Angebot? Wir sind für Sie da.
@@ -209,7 +178,7 @@ const Index = () => {
               <div className="mt-8 space-y-4">
                 <div className="flex items-center gap-3">
                   <Phone className="h-5 w-5 text-primary" />
-                  <a href="tel:+4915216399326" className="font-medium hover:underline">+49 152 16 39 93 26</a>
+                  <a href="tel:+4915212971388" className="font-medium hover:underline">+49 152 1297 1388</a>
                 </div>
                 <WhatsAppButton label="Über WhatsApp kontaktieren" />
               </div>
