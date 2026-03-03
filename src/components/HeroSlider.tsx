@@ -3,31 +3,31 @@ import { Link } from "react-router-dom";
 import { ArrowRight, Award } from "lucide-react";
 import { WhatsAppButton } from "./WhatsAppButton";
 import { AnimatedSection } from "./AnimatedSection";
+import hausmeisterImg from "@/assets/hausmeister.jpg";
+import entruempelungImg from "@/assets/entruempelung.jpg";
 import renovationImg from "@/assets/renovation.jpeg";
-import heatingImg from "@/assets/heating.jpeg";
-import buildingImg from "@/assets/building.jpeg";
 
 const slides = [
   {
-    image: renovationImg,
+    image: hausmeisterImg,
     headline: "Ihr zuverlässiger Partner für erstklassige Immobilienbetreuung",
     sub: "Objektbetreuung, Sanierung, Entrümpelung und mehr – ERCA Dienstleistungen liefert Handwerksqualität auf höchstem Niveau. Alles aus einer Hand in Essen & Region.",
     cta: "Holen Sie sich jetzt Ihr Angebot",
-    alt: "Professionelle Sanierungsarbeiten in einer Wohnung",
+    alt: "ERCA Hausmeister bei der professionellen Objektbetreuung im Gebäudeflur",
   },
   {
-    image: buildingImg,
-    headline: "Professionelle Objektbetreuung & Hausmeisterservice",
-    sub: "Wir betreuen Wohnanlagen, Pflegeheime und Gewerbeobjekte – zuverlässig, sauber dokumentiert und immer erreichbar.",
+    image: entruempelungImg,
+    headline: "Professionelle Entrümpelung & Entsorgung",
+    sub: "Wir entrümpeln fachgerecht und entsorgen umweltgerecht – für Privat, Hausverwaltungen und Gewerbetreibende.",
     cta: "Jetzt Angebot anfordern",
-    alt: "Modernes Mehrfamilienhaus mit gepflegter Außenanlage",
+    alt: "ERCA Mitarbeiter bei einer professionellen Entrümpelung mit Transporter",
   },
   {
-    image: heatingImg,
-    headline: "Sanierungen, Entrümpelung & barrierefreie Umbauten",
-    sub: "Von der Komplettsanierung über Entsorgung bis zum barrierefreien Umbau – termingerecht und budgettreu.",
+    image: renovationImg,
+    headline: "Sanierungen, Renovierungen & barrierefreie Umbauten",
+    sub: "Von der Komplettsanierung über barrierefreie Umbauten bis zum kleinen Umzugsservice – termingerecht und budgettreu.",
     cta: "Kostenloses Angebot anfordern",
-    alt: "Renovierungsarbeiten in einem Gebäude",
+    alt: "Professionelle Sanierungsarbeiten in einer Wohnung",
   },
 ];
 

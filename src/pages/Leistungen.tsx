@@ -3,13 +3,15 @@ import { Building2, Wrench, Trash2, Accessibility, Truck, CheckCircle2 } from "l
 import { Link } from "react-router-dom";
 import renovationImg from "@/assets/renovation.jpeg";
 import buildingImg from "@/assets/building.jpeg";
+import hausmeisterImg from "@/assets/hausmeister.jpg";
+import entruempelungImg from "@/assets/entruempelung.jpg";
 
 const services = [
   {
     icon: Building2,
     title: "Objektbetreuung / Hausmeisterservice",
     desc: "Als erfahrener Objektbetreuer übernehmen wir die Verantwortung für den technischen und infrastrukturellen Betrieb Ihrer Immobilien – transparent, zuverlässig und lückenlos dokumentiert.",
-    image: buildingImg,
+    image: hausmeisterImg,
     features: ["Technisches Gebäudemanagement", "Regelmäßige Begehungen & Dokumentation", "Grünanlagenpflege & Außenanlagen", "Winterdienst & Streupflicht", "Sicherheitskontrollgänge", "Kleinreparaturen & Instandhaltung"],
   },
   {
@@ -23,7 +25,7 @@ const services = [
     icon: Trash2,
     title: "Entsorgung & Entrümpelung",
     desc: "Fachgerechte Entrümpelung und Entsorgung für Privatpersonen, Hausverwaltungen und Gewerbetreibende – schnell, sauber und umweltgerecht.",
-    image: buildingImg,
+    image: entruempelungImg,
     features: ["Haushaltsauflösungen", "Kellerentrümpelung", "Sperrmüllentsorgung", "Gewerbeentrümpelung", "Umweltgerechte Entsorgung"],
   },
   {
@@ -37,7 +39,7 @@ const services = [
     icon: Truck,
     title: "Kleiner Umzugsservice für Privat",
     desc: "Unkomplizierter Umzugsservice für Privatkunden innerhalb Essen und Umgebung. Wir packen an, damit Sie es nicht müssen.",
-    image: buildingImg,
+    image: entruempelungImg,
     features: ["Möbeltransport innerhalb der Region", "Auf- und Abbau von Möbeln", "Transportverpackung", "Seniorenumzüge mit besonderer Sorgfalt", "Flexible Terminvereinbarung"],
   },
 ];
