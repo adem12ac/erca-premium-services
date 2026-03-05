@@ -1,6 +1,6 @@
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useRef, TouchEvent } from "react";
 import { Link } from "react-router-dom";
-import { ArrowRight, Award } from "lucide-react";
+import { ArrowRight, Award, ChevronLeft, ChevronRight } from "lucide-react";
 import { WhatsAppButton } from "./WhatsAppButton";
 import { AnimatedSection } from "./AnimatedSection";
 import hausmeisterImg from "@/assets/hausmeister.jpg";
@@ -33,18 +33,64 @@ const slides = [
 
 export const HeroSlider = () => {
   const [current, setCurrent] = useState(0);
+  const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
+  const touchStartX = useRef(0);
+  const touchEndX = useRef(0);
+
+  const resetTimer = useCallback(() => {
+    if (timerRef.current) clearInterval(timerRef.current);
+    timerRef.current = setInterval(() => {
+      setCurrent((prev) => (prev + 1) % slides.length);
+    }, 6000);
+  }, []);
+
+  const goTo = useCallback((index: number) => {
+    setCurrent(index);
+    resetTimer();
+  }, [resetTimer]);
 
   const next = useCallback(() => {
     setCurrent((prev) => (prev + 1) % slides.length);
-  }, []);
+    resetTimer();
+  }, [resetTimer]);
+
+  const prev = useCallback(() => {
+    setCurrent((prev) => (prev - 1 + slides.length) % slides.length);
+    resetTimer();
+  }, [resetTimer]);
 
   useEffect(() => {
-    const timer = setInterval(next, 6000);
-    return () => clearInterval(timer);
-  }, [next]);
+    resetTimer();
+    return () => {
+      if (timerRef.current) clearInterval(timerRef.current);
+    };
+  }, [resetTimer]);
+
+  const handleTouchStart = (e: TouchEvent) => {
+    touchStartX.current = e.touches[0].clientX;
+  };
+
+  const handleTouchMove = (e: TouchEvent) => {
+    touchEndX.current = e.touches[0].clientX;
+  };
+
+  const handleTouchEnd = () => {
+    const diff = touchStartX.current - touchEndX.current;
+    const threshold = 50;
+    if (Math.abs(diff) > threshold) {
+      if (diff > 0) next();
+      else prev();
+    }
+  };
 
   return (
-    <section className="relative flex min-h-[90vh] items-center overflow-hidden pt-20" aria-label="Hero-Bildergalerie">
+    <section
+      className="relative flex min-h-[90vh] items-center overflow-hidden pt-20"
+      aria-label="Hero-Bildergalerie"
+      onTouchStart={handleTouchStart}
+      onTouchMove={handleTouchMove}
+      onTouchEnd={handleTouchEnd}
+    >
       {slides.map((slide, i) => (
         <div
           key={i}
@@ -61,6 +107,22 @@ export const HeroSlider = () => {
           <div className="absolute inset-0 bg-gradient-to-r from-foreground/90 via-foreground/70 to-foreground/30" />
         </div>
       ))}
+
+      {/* Arrow buttons */}
+      <button
+        onClick={prev}
+        className="absolute left-4 top-1/2 z-20 -translate-y-1/2 rounded-full bg-background/20 p-2 text-primary-foreground backdrop-blur-sm transition-colors hover:bg-background/40"
+        aria-label="Vorheriger Slide"
+      >
+        <ChevronLeft className="h-6 w-6" />
+      </button>
+      <button
+        onClick={next}
+        className="absolute right-4 top-1/2 z-20 -translate-y-1/2 rounded-full bg-background/20 p-2 text-primary-foreground backdrop-blur-sm transition-colors hover:bg-background/40"
+        aria-label="Nächster Slide"
+      >
+        <ChevronRight className="h-6 w-6" />
+      </button>
 
       <div className="container relative z-10 py-20">
         <AnimatedSection key={current}>
@@ -96,10 +158,10 @@ export const HeroSlider = () => {
         {slides.map((_, i) => (
           <button
             key={i}
-            onClick={() => setCurrent(i)}
+            onClick={() => goTo(i)}
             aria-label={`Slide ${i + 1}`}
             className={`h-2 rounded-full transition-all duration-300 ${
-              i === current ? "w-8 bg-accent" : "w-2 bg-primary-foreground/40"
+              i === current ? "w-8 bg-accent" : "w-2 bg-primary-foreground/40 hover:bg-primary-foreground/60"
             }`}
           />
         ))}
