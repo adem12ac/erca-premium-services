@@ -1,33 +1,32 @@
 import { useState, useEffect, useCallback, useRef, TouchEvent } from "react";
 import { Link } from "react-router-dom";
-import { ArrowRight, Award, ChevronLeft, ChevronRight } from "lucide-react";
-import { WhatsAppButton } from "./WhatsAppButton";
-import { AnimatedSection } from "./AnimatedSection";
+import { ArrowRight, ChevronLeft, ChevronRight, Phone } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 import hausmeisterImg from "@/assets/hausmeister.jpg";
-import entruempelungImg from "@/assets/entruempelung.jpg";
+import barrierefreiImg from "@/assets/barrierefrei.jpg";
 import renovationImg from "@/assets/renovation.jpeg";
 
 const slides = [
   {
     image: hausmeisterImg,
-    headline: "Ihr zuverlässiger Partner für erstklassige Immobilienbetreuung",
-    sub: "Objektbetreuung, Sanierung, Entrümpelung und mehr – ERCA Dienstleistungen liefert Handwerksqualität auf höchstem Niveau. Alles aus einer Hand in Essen & Region.",
-    cta: "Holen Sie sich jetzt Ihr Angebot",
-    alt: "ERCA Hausmeister bei der professionellen Objektbetreuung im Gebäudeflur",
+    headline: "Ihr Partner für erstklassige Immobilienbetreuung",
+    sub: "Objektbetreuung, Sanierung, Entrümpelung und mehr – ERCA Dienstleistungen liefert Handwerksqualität auf höchstem Niveau.",
+    cta: "Kostenloses Angebot anfragen",
+    alt: "ERCA Hausmeister bei professioneller Objektbetreuung",
   },
   {
-    image: entruempelungImg,
-    headline: "Professionelle Entrümpelung & Entsorgung",
-    sub: "Wir entrümpeln fachgerecht und entsorgen umweltgerecht – für Privat, Hausverwaltungen und Gewerbetreibende.",
-    cta: "Jetzt Angebot anfordern",
-    alt: "ERCA Mitarbeiter bei einer professionellen Entrümpelung mit Transporter",
+    image: barrierefreiImg,
+    headline: "Barrierefreier Umbau – für ein selbstbestimmtes Leben",
+    sub: "Barrierefreie Umbauten nach DIN 18040 – einfühlsam geplant, fachgerecht umgesetzt. Für Pflegeheime, Seniorenwohnanlagen und Privat.",
+    cta: "Beratung vereinbaren",
+    alt: "Barrierefreier Badumbau – barrierefrei und modern",
   },
   {
     image: renovationImg,
-    headline: "Sanierungen, Renovierungen & barrierefreie Umbauten",
-    sub: "Von der Komplettsanierung über barrierefreie Umbauten bis zum kleinen Umzugsservice – termingerecht und budgettreu.",
-    cta: "Kostenloses Angebot anfordern",
-    alt: "Professionelle Sanierungsarbeiten in einer Wohnung",
+    headline: "Alles aus einer Hand – von Sanierung bis Umzug",
+    sub: "Von der Komplettsanierung bis zum Umzugsservice – termingerecht, budgettreu und mit über 30 Jahren Erfahrung.",
+    cta: "Jetzt Angebot anfordern",
+    alt: "Professionelle Sanierungsarbeiten von ERCA",
   },
 ];
 
@@ -41,7 +40,7 @@ export const HeroSlider = () => {
     if (timerRef.current) clearInterval(timerRef.current);
     timerRef.current = setInterval(() => {
       setCurrent((prev) => (prev + 1) % slides.length);
-    }, 6000);
+    }, 10000);
   }, []);
 
   const goTo = useCallback((index: number) => {
@@ -61,42 +60,35 @@ export const HeroSlider = () => {
 
   useEffect(() => {
     resetTimer();
-    return () => {
-      if (timerRef.current) clearInterval(timerRef.current);
-    };
+    return () => { if (timerRef.current) clearInterval(timerRef.current); };
   }, [resetTimer]);
 
-  const handleTouchStart = (e: TouchEvent) => {
-    touchStartX.current = e.touches[0].clientX;
-  };
-
-  const handleTouchMove = (e: TouchEvent) => {
-    touchEndX.current = e.touches[0].clientX;
-  };
-
+  const handleTouchStart = (e: TouchEvent) => { touchStartX.current = e.touches[0].clientX; };
+  const handleTouchMove = (e: TouchEvent) => { touchEndX.current = e.touches[0].clientX; };
   const handleTouchEnd = () => {
     const diff = touchStartX.current - touchEndX.current;
-    const threshold = 50;
-    if (Math.abs(diff) > threshold) {
-      if (diff > 0) next();
-      else prev();
-    }
+    if (Math.abs(diff) > 50) { diff > 0 ? next() : prev(); }
   };
 
   return (
     <section
-      className="relative flex min-h-[90vh] items-center overflow-hidden pt-20"
+      className="relative flex min-h-[92vh] items-center overflow-hidden pt-20"
       aria-label="Hero-Bildergalerie"
+      aria-roledescription="Karussell"
       onTouchStart={handleTouchStart}
       onTouchMove={handleTouchMove}
       onTouchEnd={handleTouchEnd}
     >
+      {/* Background images with smooth crossfade */}
       {slides.map((slide, i) => (
         <div
           key={i}
-          className={`absolute inset-0 -z-10 transition-opacity duration-1000 ease-in-out ${
-            i === current ? "opacity-100" : "opacity-0"
-          }`}
+          className="absolute inset-0 -z-10"
+          style={{
+            opacity: i === current ? 1 : 0,
+            transition: "opacity 1.8s cubic-bezier(0.4, 0, 0.2, 1)",
+          }}
+          aria-hidden={i !== current}
         >
           <img
             src={slide.image}
@@ -104,64 +96,80 @@ export const HeroSlider = () => {
             className="h-full w-full object-cover"
             loading={i === 0 ? "eager" : "lazy"}
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-foreground/90 via-foreground/70 to-foreground/30" />
+          <div className="absolute inset-0 bg-gradient-to-r from-foreground/85 via-foreground/60 to-foreground/20" />
         </div>
       ))}
 
-      {/* Arrow buttons */}
+      {/* Arrows */}
       <button
         onClick={prev}
-        className="absolute left-4 top-1/2 z-20 -translate-y-1/2 rounded-full bg-background/20 p-2 text-primary-foreground backdrop-blur-sm transition-colors hover:bg-background/40"
+        className="absolute left-5 top-1/2 z-20 -translate-y-1/2 rounded-full bg-background/10 p-3 text-primary-foreground backdrop-blur-md transition-all hover:bg-background/25 focus-visible:ring-2 focus-visible:ring-ring"
         aria-label="Vorheriger Slide"
       >
-        <ChevronLeft className="h-6 w-6" />
+        <ChevronLeft className="h-5 w-5" />
       </button>
       <button
         onClick={next}
-        className="absolute right-4 top-1/2 z-20 -translate-y-1/2 rounded-full bg-background/20 p-2 text-primary-foreground backdrop-blur-sm transition-colors hover:bg-background/40"
+        className="absolute right-5 top-1/2 z-20 -translate-y-1/2 rounded-full bg-background/10 p-3 text-primary-foreground backdrop-blur-md transition-all hover:bg-background/25 focus-visible:ring-2 focus-visible:ring-ring"
         aria-label="Nächster Slide"
       >
-        <ChevronRight className="h-6 w-6" />
+        <ChevronRight className="h-5 w-5" />
       </button>
 
+      {/* Content */}
       <div className="container relative z-10 py-20">
-        <AnimatedSection key={current}>
-          <p className="mb-4 inline-flex items-center gap-2 rounded-full border border-primary-foreground/20 bg-primary-foreground/10 px-4 py-1.5 text-sm font-medium text-primary-foreground backdrop-blur-sm">
-            <Award className="h-4 w-4" /> Über 30 Jahre Expertise · Essen & NRW
-          </p>
-          <h1 className="max-w-3xl font-display text-4xl font-extrabold leading-[1.1] text-primary-foreground sm:text-5xl lg:text-6xl">
-            {slides[current].headline}
-          </h1>
-          <p className="mt-6 max-w-xl text-lg leading-relaxed text-primary-foreground/80">
-            {slides[current].sub}
-          </p>
-          <div className="mt-8 flex flex-wrap gap-4">
-            <Link
-              to="/kontakt"
-              className="inline-flex items-center gap-2 rounded-lg bg-accent px-7 py-3.5 font-semibold text-accent-foreground transition-opacity hover:opacity-90"
-            >
-              {slides[current].cta} <ArrowRight className="h-4 w-4" />
-            </Link>
-            <WhatsAppButton label="WhatsApp Chat" />
-            <Link
-              to="/leistungen"
-              className="inline-flex items-center gap-2 rounded-lg border border-primary-foreground/30 px-7 py-3.5 font-semibold text-primary-foreground backdrop-blur-sm transition-colors hover:bg-primary-foreground/10"
-            >
-              Leistungen entdecken
-            </Link>
-          </div>
-        </AnimatedSection>
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={current}
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
+          >
+            <p className="mb-5 inline-flex items-center gap-2 rounded-full border border-primary-foreground/15 bg-primary-foreground/8 px-4 py-2 text-sm font-medium text-primary-foreground backdrop-blur-sm">
+              Über 30 Jahre Expertise · Essen & NRW
+            </p>
+            <h1 className="max-w-3xl font-display text-4xl font-bold leading-[1.08] text-primary-foreground sm:text-5xl lg:text-[3.5rem]">
+              {slides[current].headline}
+            </h1>
+            <p className="mt-6 max-w-xl text-lg leading-relaxed text-primary-foreground/75">
+              {slides[current].sub}
+            </p>
+            <div className="mt-10 flex flex-wrap gap-4">
+              <Link
+                to="/kontakt"
+                className="inline-flex items-center gap-2 rounded-xl bg-accent px-7 py-4 font-semibold text-accent-foreground transition-all hover:opacity-90 focus-visible:ring-2 focus-visible:ring-ring"
+              >
+                {slides[current].cta} <ArrowRight className="h-4 w-4" />
+              </Link>
+              <a
+                href="tel:+4915212971388"
+                className="inline-flex items-center gap-2 rounded-xl border-2 border-primary-foreground/25 px-7 py-4 font-semibold text-primary-foreground backdrop-blur-sm transition-colors hover:bg-primary-foreground/10 focus-visible:ring-2 focus-visible:ring-ring"
+              >
+                <Phone className="h-4 w-4" /> Jetzt anrufen
+              </a>
+              <Link
+                to="/leistungen"
+                className="inline-flex items-center gap-2 rounded-xl border border-primary-foreground/15 px-7 py-4 font-semibold text-primary-foreground/80 backdrop-blur-sm transition-colors hover:bg-primary-foreground/10"
+              >
+                Leistungen entdecken
+              </Link>
+            </div>
+          </motion.div>
+        </AnimatePresence>
       </div>
 
       {/* Slide indicators */}
-      <div className="absolute bottom-8 left-1/2 z-10 flex -translate-x-1/2 gap-2">
+      <div className="absolute bottom-10 left-1/2 z-10 flex -translate-x-1/2 gap-2.5" role="tablist">
         {slides.map((_, i) => (
           <button
             key={i}
             onClick={() => goTo(i)}
+            role="tab"
+            aria-selected={i === current}
             aria-label={`Slide ${i + 1}`}
-            className={`h-2 rounded-full transition-all duration-300 ${
-              i === current ? "w-8 bg-accent" : "w-2 bg-primary-foreground/40 hover:bg-primary-foreground/60"
+            className={`h-2 rounded-full transition-all duration-500 ${
+              i === current ? "w-10 bg-accent" : "w-2.5 bg-primary-foreground/30 hover:bg-primary-foreground/50"
             }`}
           />
         ))}
