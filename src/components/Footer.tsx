@@ -1,13 +1,13 @@
 import { Link } from "react-router-dom";
 import { Phone, Mail, MapPin, Clock } from "lucide-react";
-import logo from "@/assets/logo-new.png";
+
 
 export const Footer = () => (
   <footer className="bg-navy text-primary-foreground" role="contentinfo">
     <div className="container py-16">
       <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-4">
         <div>
-          <img src={logo} alt="ERCA Dienstleistungen" className="mb-4 h-10 w-auto brightness-0 invert" />
+          <span className="mb-4 block font-display text-2xl font-bold text-primary-foreground">ERCA Dienstleistungen</span>
           <p className="text-sm leading-relaxed opacity-70">
             Ihr zuverlässiger Partner für erstklassige Immobilienbetreuung in Essen und Region.
           </p>
