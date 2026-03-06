@@ -2,6 +2,7 @@ import { AnimatedSection } from "@/components/AnimatedSection";
 import { WhatsAppButton } from "@/components/WhatsAppButton";
 import { ContactForm } from "@/components/ContactForm";
 import { HeroSlider } from "@/components/HeroSlider";
+import { BeforeAfterSection } from "@/components/BeforeAfterSlider";
 import { Link } from "react-router-dom";
 import { ArrowRight, Shield, Clock, Award, Wrench, Building2, Trash2, Accessibility, Truck, CheckCircle2, Phone } from "lucide-react";
 import renovationImg from "@/assets/renovation.jpeg";
@@ -140,6 +141,9 @@ const Index = () => {
           </div>
         </div>
       </section>
+
+      {/* Before/After */}
+      <BeforeAfterSection />
 
       {/* CTA For Business */}
       <section className="relative overflow-hidden py-24" aria-labelledby="business-heading">

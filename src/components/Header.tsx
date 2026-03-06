@@ -22,7 +22,7 @@ export const Header = () => {
     <header className="fixed top-0 left-0 right-0 z-40 border-b border-border/40 bg-background/95 backdrop-blur-xl">
       <div className="container flex h-20 items-center justify-between">
         <Link to="/" className="flex items-center gap-2" aria-label="ERCA Startseite">
-          <img src={logo} alt="ERCA Dienstleistungen" className="h-10 w-auto" />
+          <img src={logo} alt="ERCA Dienstleistungen" className="h-10 w-auto" style={{ filter: "none" }} />
         </Link>
 
         <nav className="hidden items-center gap-0.5 lg:flex" aria-label="Hauptnavigation">
