@@ -1,6 +1,7 @@
 import { AnimatedSection } from "@/components/AnimatedSection";
 import { Building2, Wrench, Trash2, Accessibility, Truck, CheckCircle2 } from "lucide-react";
 import { Link } from "react-router-dom";
+import heroLeistungenImg from "@/assets/hero-leistungen.jpeg";
 import renovationImg from "@/assets/renovation.jpeg";
 import hausmeisterImg from "@/assets/hausmeister.jpg";
 import entruempelungImg from "@/assets/entruempelung.jpg";
@@ -48,12 +49,16 @@ const services = [
 const Leistungen = () => (
   <div className="pt-20">
     {/* Hero */}
-    <section className="bg-section-alt py-20 lg:py-28">
-      <div className="container text-center">
+    <section className="relative py-28 lg:py-36 overflow-hidden">
+      <div className="absolute inset-0">
+        <img src={heroLeistungenImg} alt="" className="h-full w-full object-cover" />
+        <div className="absolute inset-0 bg-navy/70" />
+      </div>
+      <div className="container relative text-center">
         <AnimatedSection>
-          <p className="text-sm font-semibold uppercase tracking-widest text-green">Leistungen</p>
-          <h1 className="mt-3 font-display text-4xl font-extrabold text-foreground sm:text-5xl">Unser Leistungsspektrum</h1>
-          <p className="mx-auto mt-4 max-w-2xl text-muted-foreground">Fünf Fachbereiche, ein kompetenter Partner. Alles aus einer Hand für Ihre Immobilie.</p>
+          <p className="text-sm font-semibold uppercase tracking-widest text-accent">Leistungen</p>
+          <h1 className="mt-3 font-display text-4xl font-extrabold text-white sm:text-5xl">Unser Leistungsspektrum</h1>
+          <p className="mx-auto mt-4 max-w-2xl text-white/80">Fünf Fachbereiche, ein kompetenter Partner. Alles aus einer Hand für Ihre Immobilie.</p>
         </AnimatedSection>
       </div>
     </section>
