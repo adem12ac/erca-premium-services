@@ -1,14 +1,19 @@
 import { AnimatedSection } from "@/components/AnimatedSection";
 import { Shield, Award, Users, Clock } from "lucide-react";
+import heroImg from "@/assets/hero-ueberuns.jpeg";
 
 const UeberUns = () => (
   <div className="pt-20">
-    <section className="bg-section-alt py-20 lg:py-28">
-      <div className="container text-center">
+    <section className="relative py-28 lg:py-36 overflow-hidden">
+      <div className="absolute inset-0">
+        <img src={heroImg} alt="" className="h-full w-full object-cover" />
+        <div className="absolute inset-0 bg-navy/70" />
+      </div>
+      <div className="container relative text-center">
         <AnimatedSection>
-          <p className="text-sm font-semibold uppercase tracking-widest text-green">Über uns</p>
-          <h1 className="mt-3 font-display text-4xl font-extrabold text-foreground sm:text-5xl">Qualität durch Kompetenz</h1>
-          <p className="mx-auto mt-4 max-w-2xl text-muted-foreground">Vertrauen durch Erfahrung – seit über 30 Jahren.</p>
+          <p className="text-sm font-semibold uppercase tracking-widest text-accent">Über uns</p>
+          <h1 className="mt-3 font-display text-4xl font-extrabold text-white sm:text-5xl">Qualität durch Kompetenz</h1>
+          <p className="mx-auto mt-4 max-w-2xl text-white/80">Vertrauen durch Erfahrung – seit über 30 Jahren.</p>
         </AnimatedSection>
       </div>
     </section>
