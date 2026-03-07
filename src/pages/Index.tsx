@@ -68,10 +68,10 @@ const services = [
 ];
 
 const certPreviews = [
-  { img: cert01, label: "TÜV SÜD" },
-  { img: cert02, label: "DISCHER Technik" },
-  { img: cert03, label: "BGW" },
-  { img: cert04, label: "Würth Akademie" },
+  { img: cert01, label: "TÜV SÜD – Aufzugswärter" },
+  { img: cert02, label: "TÜV – Brandschutztüren" },
+  { img: cert03, label: "TÜV – Haustechnik B" },
+  { img: cert04, label: "Elektrotechnik – EuP" },
 ];
 
 const Index = () => {
