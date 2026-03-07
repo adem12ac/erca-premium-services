@@ -1,5 +1,6 @@
 import { AnimatedSection } from "@/components/AnimatedSection";
 import { Shield, Award, Users, Clock } from "lucide-react";
+import { useSEO } from "@/hooks/useSEO";
 import heroImg from "@/assets/hero-ueberuns.jpeg";
 
 const UeberUns = () => (
