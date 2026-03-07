@@ -100,7 +100,8 @@ const Privatkunden = () => {
         <ContactForm />
       </div>
     </section>
-  </div>
-);
+    </div>
+  );
+};
 
 export default Privatkunden;
