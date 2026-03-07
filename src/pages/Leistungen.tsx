@@ -46,10 +46,16 @@ const services = [
   },
 ];
 
-const Leistungen = () => (
-  <div className="pt-20">
-    {/* Hero */}
-    <section className="relative py-28 lg:py-36 overflow-hidden">
+import heroLeistungenImg from "@/assets/hero-leistungen.jpeg";
+
+const Leistungen = () => {
+  useSEO({
+    title: "Leistungen – ERCA Dienstleistungen Essen | Hausmeister, Sanierung & mehr",
+    description: "Unsere Leistungen: Objektbetreuung, Sanierungen, Entrümpelung, barrierefreie Umbauten & Umzugsservice in Essen. Fünf Fachbereiche, ein kompetenter Partner.",
+    canonical: "https://erca-service.de/leistungen",
+  });
+
+  return (
       <div className="absolute inset-0">
         <img src={heroLeistungenImg} alt="" className="h-full w-full object-cover" />
         <div className="absolute inset-0 bg-navy/70" />
