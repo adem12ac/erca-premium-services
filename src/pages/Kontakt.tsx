@@ -2,6 +2,7 @@ import { AnimatedSection } from "@/components/AnimatedSection";
 import { ContactForm } from "@/components/ContactForm";
 import { WhatsAppButton } from "@/components/WhatsAppButton";
 import { Phone, Mail, MapPin, Clock, AlertCircle } from "lucide-react";
+import { useSEO } from "@/hooks/useSEO";
 import heroImg from "@/assets/hero-kontakt.webp";
 
 const Kontakt = () => (
