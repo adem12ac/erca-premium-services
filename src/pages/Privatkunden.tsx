@@ -2,6 +2,7 @@ import { AnimatedSection } from "@/components/AnimatedSection";
 import { ContactForm } from "@/components/ContactForm";
 import { CheckCircle2, Heart, Euro, Calendar, Wrench, Trash2, Accessibility, Truck } from "lucide-react";
 import { Link } from "react-router-dom";
+import { useSEO } from "@/hooks/useSEO";
 import heroImg from "@/assets/hero-privatkunden.jpeg";
 
 const benefits = [
@@ -18,8 +19,15 @@ const privatServices = [
   { icon: Truck, title: "Umzugsservice", desc: "Unkomplizierter Umzugsservice innerhalb Essen und Umgebung." },
 ];
 
-const Privatkunden = () => (
-  <div className="pt-20">
+const Privatkunden = () => {
+  useSEO({
+    title: "Privatkunden – ERCA Dienstleistungen Essen | Sanierung & Renovierung",
+    description: "Premium-Qualität für Ihr Zuhause: Sanierungen, Entrümpelung, barrierefreie Umbauten & Umzugsservice in Essen. Faire Preise und persönliche Beratung.",
+    canonical: "https://erca-service.de/privatkunden",
+  });
+
+  return (
+    <div className="pt-20">
     <section className="relative py-28 lg:py-36 overflow-hidden">
       <div className="absolute inset-0">
         <img src={heroImg} alt="" className="h-full w-full object-cover" />
@@ -92,7 +100,8 @@ const Privatkunden = () => (
         <ContactForm />
       </div>
     </section>
-  </div>
-);
+    </div>
+  );
+};
 
 export default Privatkunden;

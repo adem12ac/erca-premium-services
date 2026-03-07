@@ -12,11 +12,13 @@ import umzugImg from "@/assets/umzugsservice.jpg";
 import barrierefreiImg from "@/assets/barrierefrei.jpg";
 import buildingImg from "@/assets/building.jpeg";
 
-// Certificate thumbnails
-import cert01 from "@/assets/imgur/img13.jpeg";
-import cert02 from "@/assets/imgur/img02.jpeg";
-import cert03 from "@/assets/imgur/img06.jpeg";
-import cert04 from "@/assets/imgur/img11.jpeg";
+import { useSEO } from "@/hooks/useSEO";
+
+// Certificate thumbnails – 4 new uploads as preview
+import cert01 from "@/assets/imgur/img18.jpeg";
+import cert02 from "@/assets/imgur/img16.jpeg";
+import cert03 from "@/assets/imgur/img17.jpeg";
+import cert04 from "@/assets/imgur/img19.jpeg";
 
 const stats = [
   { value: "30+", label: "Jahre Erfahrung" },
@@ -66,13 +68,18 @@ const services = [
 ];
 
 const certPreviews = [
-  { img: cert01, label: "TÜV SÜD" },
-  { img: cert02, label: "DISCHER Technik" },
-  { img: cert03, label: "BGW" },
-  { img: cert04, label: "Würth Akademie" },
+  { img: cert01, label: "TÜV SÜD – Aufzugswärter" },
+  { img: cert02, label: "TÜV – Brandschutztüren" },
+  { img: cert03, label: "TÜV – Haustechnik B" },
+  { img: cert04, label: "Elektrotechnik – EuP" },
 ];
 
 const Index = () => {
+  useSEO({
+    title: "ERCA Dienstleistungen Essen – Hausmeisterservice, Sanierung & Gebäudeservice",
+    description: "ERCA Dienstleistungen in Essen: Hausmeisterservice, Sanierungen, Entrümpelung, barrierefreie Umbauten & Umzugsservice. Über 30 Jahre Erfahrung. ✓ TÜV-zertifiziert ✓ 24h Notdienst.",
+    canonical: "https://erca-service.de/",
+  });
   return (
     <div className="flex flex-col">
       <HeroSlider />

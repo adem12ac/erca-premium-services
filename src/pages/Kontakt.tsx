@@ -2,10 +2,18 @@ import { AnimatedSection } from "@/components/AnimatedSection";
 import { ContactForm } from "@/components/ContactForm";
 import { WhatsAppButton } from "@/components/WhatsAppButton";
 import { Phone, Mail, MapPin, Clock, AlertCircle } from "lucide-react";
+import { useSEO } from "@/hooks/useSEO";
 import heroImg from "@/assets/hero-kontakt.webp";
 
-const Kontakt = () => (
-  <div className="pt-20">
+const Kontakt = () => {
+  useSEO({
+    title: "Kontakt – ERCA Dienstleistungen Essen | Jetzt Angebot anfordern",
+    description: "Kontaktieren Sie ERCA Dienstleistungen in Essen. Kostenlose Beratung, schnelle Angebotserstellung. ☎ +49 152 1297 1388. Wir sind für Sie da!",
+    canonical: "https://erca-service.de/kontakt",
+  });
+
+  return (
+    <div className="pt-20">
     <section className="relative py-28 lg:py-36 overflow-hidden">
       <div className="absolute inset-0">
         <img src={heroImg} alt="" className="h-full w-full object-cover" />
@@ -90,7 +98,8 @@ const Kontakt = () => (
         </div>
       </div>
     </section>
-  </div>
-);
+    </div>
+  );
+};
 
 export default Kontakt;

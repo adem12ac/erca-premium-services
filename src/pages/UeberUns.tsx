@@ -1,9 +1,17 @@
 import { AnimatedSection } from "@/components/AnimatedSection";
 import { Shield, Award, Users, Clock } from "lucide-react";
+import { useSEO } from "@/hooks/useSEO";
 import heroImg from "@/assets/hero-ueberuns.jpeg";
 
-const UeberUns = () => (
-  <div className="pt-20">
+const UeberUns = () => {
+  useSEO({
+    title: "Über uns – ERCA Dienstleistungen Essen | 30+ Jahre Erfahrung",
+    description: "Lernen Sie ERCA Dienstleistungen kennen: Inhabergeführt, über 30 Jahre Erfahrung, 25+ Zertifikate. Ihr zuverlässiger Partner für Gebäudeservice in Essen & NRW.",
+    canonical: "https://erca-service.de/ueber-uns",
+  });
+
+  return (
+    <div className="pt-20">
     <section className="relative py-28 lg:py-36 overflow-hidden">
       <div className="absolute inset-0">
         <img src={heroImg} alt="" className="h-full w-full object-cover" />
@@ -70,7 +78,8 @@ const UeberUns = () => (
         </div>
       </div>
     </section>
-  </div>
-);
+    </div>
+  );
+};
 
 export default UeberUns;

@@ -1,7 +1,7 @@
 import { AnimatedSection } from "@/components/AnimatedSection";
 import { Building2, Wrench, Trash2, Accessibility, Truck, CheckCircle2 } from "lucide-react";
 import { Link } from "react-router-dom";
-import heroLeistungenImg from "@/assets/hero-leistungen.jpeg";
+import { useSEO } from "@/hooks/useSEO";
 import renovationImg from "@/assets/renovation.jpeg";
 import hausmeisterImg from "@/assets/hausmeister.jpg";
 import entruempelungImg from "@/assets/entruempelung.jpg";
@@ -46,9 +46,17 @@ const services = [
   },
 ];
 
-const Leistungen = () => (
-  <div className="pt-20">
-    {/* Hero */}
+import heroLeistungenImg from "@/assets/hero-leistungen.jpeg";
+
+const Leistungen = () => {
+  useSEO({
+    title: "Leistungen – ERCA Dienstleistungen Essen | Hausmeister, Sanierung & mehr",
+    description: "Unsere Leistungen: Objektbetreuung, Sanierungen, Entrümpelung, barrierefreie Umbauten & Umzugsservice in Essen. Fünf Fachbereiche, ein kompetenter Partner.",
+    canonical: "https://erca-service.de/leistungen",
+  });
+
+  return (
+    <div className="pt-20">
     <section className="relative py-28 lg:py-36 overflow-hidden">
       <div className="absolute inset-0">
         <img src={heroLeistungenImg} alt="" className="h-full w-full object-cover" />
@@ -95,7 +103,8 @@ const Leistungen = () => (
         </div>
       </section>
     ))}
-  </div>
-);
+    </div>
+  );
+};
 
 export default Leistungen;

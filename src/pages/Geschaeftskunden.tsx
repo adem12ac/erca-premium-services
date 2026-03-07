@@ -1,6 +1,7 @@
 import { AnimatedSection } from "@/components/AnimatedSection";
 import { ContactForm } from "@/components/ContactForm";
 import { Building2, FileText, Clock, Users, CheckCircle2 } from "lucide-react";
+import { useSEO } from "@/hooks/useSEO";
 import heroImg from "@/assets/hero-geschaeftskunden.webp";
 
 const benefits = [
@@ -19,8 +20,15 @@ const targets = [
   "Gewerbliche Vermieter",
 ];
 
-const Geschaeftskunden = () => (
-  <div className="pt-20">
+const Geschaeftskunden = () => {
+  useSEO({
+    title: "Geschäftskunden – ERCA Dienstleistungen Essen | Objektbetreuung & Facility Management",
+    description: "ERCA für Geschäftskunden: Rahmenverträge, priorisierter Notdienst, Multi-Objekt-Betreuung für Hausverwaltungen, Pflegeheime & Investoren in Essen & NRW.",
+    canonical: "https://erca-service.de/geschaeftskunden",
+  });
+
+  return (
+    <div className="pt-20">
     <section className="relative py-28 lg:py-36 overflow-hidden">
       <div className="absolute inset-0">
         <img src={heroImg} alt="" className="h-full w-full object-cover" />
@@ -82,7 +90,8 @@ const Geschaeftskunden = () => (
         <ContactForm />
       </div>
     </section>
-  </div>
-);
+    </div>
+  );
+};
 
 export default Geschaeftskunden;
