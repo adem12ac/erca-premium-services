@@ -20,8 +20,14 @@ const targets = [
   "Gewerbliche Vermieter",
 ];
 
-const Geschaeftskunden = () => (
-  <div className="pt-20">
+const Geschaeftskunden = () => {
+  useSEO({
+    title: "Geschäftskunden – ERCA Dienstleistungen Essen | Objektbetreuung & Facility Management",
+    description: "ERCA für Geschäftskunden: Rahmenverträge, priorisierter Notdienst, Multi-Objekt-Betreuung für Hausverwaltungen, Pflegeheime & Investoren in Essen & NRW.",
+    canonical: "https://erca-service.de/geschaeftskunden",
+  });
+
+  return (
     <section className="relative py-28 lg:py-36 overflow-hidden">
       <div className="absolute inset-0">
         <img src={heroImg} alt="" className="h-full w-full object-cover" />
