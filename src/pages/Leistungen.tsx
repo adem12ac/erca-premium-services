@@ -1,7 +1,7 @@
 import { AnimatedSection } from "@/components/AnimatedSection";
 import { Building2, Wrench, Trash2, Accessibility, Truck, CheckCircle2 } from "lucide-react";
 import { Link } from "react-router-dom";
-import heroLeistungenImg from "@/assets/hero-leistungen.jpeg";
+import { useSEO } from "@/hooks/useSEO";
 import renovationImg from "@/assets/renovation.jpeg";
 import hausmeisterImg from "@/assets/hausmeister.jpg";
 import entruempelungImg from "@/assets/entruempelung.jpg";
