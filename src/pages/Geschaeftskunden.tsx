@@ -28,6 +28,7 @@ const Geschaeftskunden = () => {
   });
 
   return (
+    <div className="pt-20">
     <section className="relative py-28 lg:py-36 overflow-hidden">
       <div className="absolute inset-0">
         <img src={heroImg} alt="" className="h-full w-full object-cover" />
