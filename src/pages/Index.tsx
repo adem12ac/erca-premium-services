@@ -12,11 +12,13 @@ import umzugImg from "@/assets/umzugsservice.jpg";
 import barrierefreiImg from "@/assets/barrierefrei.jpg";
 import buildingImg from "@/assets/building.jpeg";
 
-// Certificate thumbnails
-import cert01 from "@/assets/imgur/img13.jpeg";
-import cert02 from "@/assets/imgur/img02.jpeg";
-import cert03 from "@/assets/imgur/img06.jpeg";
-import cert04 from "@/assets/imgur/img11.jpeg";
+import { useSEO } from "@/hooks/useSEO";
+
+// Certificate thumbnails – 4 new uploads as preview
+import cert01 from "@/assets/imgur/img18.jpeg";
+import cert02 from "@/assets/imgur/img16.jpeg";
+import cert03 from "@/assets/imgur/img17.jpeg";
+import cert04 from "@/assets/imgur/img19.jpeg";
 
 const stats = [
   { value: "30+", label: "Jahre Erfahrung" },
