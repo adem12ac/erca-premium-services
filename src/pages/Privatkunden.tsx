@@ -2,6 +2,7 @@ import { AnimatedSection } from "@/components/AnimatedSection";
 import { ContactForm } from "@/components/ContactForm";
 import { CheckCircle2, Heart, Euro, Calendar, Wrench, Trash2, Accessibility, Truck } from "lucide-react";
 import { Link } from "react-router-dom";
+import { useSEO } from "@/hooks/useSEO";
 import heroImg from "@/assets/hero-privatkunden.jpeg";
 
 const benefits = [
