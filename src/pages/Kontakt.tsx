@@ -97,7 +97,8 @@ const Kontakt = () => {
         </div>
       </div>
     </section>
-  </div>
-);
+    </div>
+  );
+};
 
 export default Kontakt;

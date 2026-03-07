@@ -42,7 +42,12 @@ const additionalServices = [
 ];
 
 const Produkte = () => {
-  const [selectedProduct, setSelectedProduct] = useState<string | null>(null);
+  useSEO({
+    title: "Preise & Pakete – ERCA Dienstleistungen Essen | Transparente Kosten",
+    description: "Transparente Preise für Entrümpelung (ab 20€/m²), Renovierung (ab 120€/m²) und Komplettsanierung (ab 800€/m²). Kostenlose Vor-Ort-Besichtigung in Essen.",
+    canonical: "https://erca-service.de/produkte",
+  });
+
 
   return (
     <div className="pt-20">

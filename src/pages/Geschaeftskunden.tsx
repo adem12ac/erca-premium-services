@@ -89,7 +89,8 @@ const Geschaeftskunden = () => {
         <ContactForm />
       </div>
     </section>
-  </div>
-);
+    </div>
+  );
+};
 
 export default Geschaeftskunden;
