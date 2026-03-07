@@ -2,6 +2,7 @@ import { useState } from "react";
 import { AnimatedSection } from "@/components/AnimatedSection";
 import { X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useSEO } from "@/hooks/useSEO";
 
 import img01 from "@/assets/imgur/img01.jpeg";
 import img02 from "@/assets/imgur/img02.jpeg";
@@ -18,9 +19,16 @@ import img12 from "@/assets/imgur/img12.jpeg";
 import img13 from "@/assets/imgur/img13.jpeg";
 import img14 from "@/assets/imgur/img14.jpeg";
 import img15 from "@/assets/imgur/img15.jpeg";
+import img16 from "@/assets/imgur/img16.jpeg";
+import img17 from "@/assets/imgur/img17.jpeg";
+import img18 from "@/assets/imgur/img18.jpeg";
+import img19 from "@/assets/imgur/img19.jpeg";
 
 const certificates = [
-  { img: img13, title: "TÜV SÜD – Aufzugswärter", org: "TÜV SÜD Industrie Service GmbH" },
+  { img: img18, title: "TÜV SÜD – Aufzugswärter", org: "TÜV SÜD Industrie Service GmbH" },
+  { img: img16, title: "TÜV Saarland – Brandschutztüren", org: "TÜV Saarland Bildung + Consulting GmbH" },
+  { img: img17, title: "TÜV Saarland – Haustechnik B", org: "TÜV Saarland Bildung + Consulting GmbH" },
+  { img: img19, title: "Elektrotechnisch unterwiesene Person", org: "Elektronikschule Tettnang" },
   { img: img02, title: "DISCHER Technik – System D3", org: "DISCHER Technik GmbH" },
   { img: img03, title: "DISCHER – Systeme M5, D3, D1", org: "DISCHER Technik GmbH" },
   { img: img06, title: "BGW – Sicherheitsbeauftragte", org: "BGW Berufsgenossenschaft" },
@@ -35,10 +43,17 @@ const certificates = [
   { img: img09, title: "Schulungszertifikat – Pflegebetten", org: "Völker Besserer Service" },
   { img: img14, title: "MEBEDO – Elektroprüfung VDE", org: "MEBEDO GmbH" },
   { img: img15, title: "AWO – Therapeutischer Garten", org: "AWO Bildungsstätte Pforzen" },
+  { img: img13, title: "TÜV SÜD – Aufzugswärter (alt)", org: "TÜV SÜD Industrie Service GmbH" },
 ];
 
 const Zertifikate = () => {
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
+
+  useSEO({
+    title: "Zertifikate & Qualifikationen – ERCA Dienstleistungen Essen",
+    description: "Über 25 Zertifikate von TÜV, BGW, Würth Akademie und mehr. ERCA Dienstleistungen in Essen steht für geprüfte Qualität und kontinuierliche Weiterbildung seit über 30 Jahren.",
+    canonical: "https://erca-service.de/zertifikate",
+  });
 
   return (
     <div className="pt-20">

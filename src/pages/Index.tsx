@@ -75,6 +75,11 @@ const certPreviews = [
 ];
 
 const Index = () => {
+  useSEO({
+    title: "ERCA Dienstleistungen Essen – Hausmeisterservice, Sanierung & Gebäudeservice",
+    description: "ERCA Dienstleistungen in Essen: Hausmeisterservice, Sanierungen, Entrümpelung, barrierefreie Umbauten & Umzugsservice. Über 30 Jahre Erfahrung. ✓ TÜV-zertifiziert ✓ 24h Notdienst.",
+    canonical: "https://erca-service.de/",
+  });
   return (
     <div className="flex flex-col">
       <HeroSlider />

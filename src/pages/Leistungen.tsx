@@ -101,7 +101,8 @@ const Leistungen = () => {
         </div>
       </section>
     ))}
-  </div>
-);
+    </div>
+  );
+};
 
 export default Leistungen;

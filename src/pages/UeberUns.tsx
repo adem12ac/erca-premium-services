@@ -77,7 +77,8 @@ const UeberUns = () => {
         </div>
       </div>
     </section>
-  </div>
-);
+    </div>
+  );
+};
 
 export default UeberUns;
