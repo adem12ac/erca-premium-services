@@ -2,6 +2,7 @@ import { useState } from "react";
 import { AnimatedSection } from "@/components/AnimatedSection";
 import { ContactForm } from "@/components/ContactForm";
 import { ArrowRight, Trash2, Wrench, Building2, CheckCircle2 } from "lucide-react";
+import { useSEO } from "@/hooks/useSEO";
 
 const pricingTiers = [
   {
