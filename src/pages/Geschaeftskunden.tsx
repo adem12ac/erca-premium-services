@@ -1,6 +1,7 @@
 import { AnimatedSection } from "@/components/AnimatedSection";
 import { ContactForm } from "@/components/ContactForm";
 import { Building2, FileText, Clock, Users, CheckCircle2 } from "lucide-react";
+import { useSEO } from "@/hooks/useSEO";
 import heroImg from "@/assets/hero-geschaeftskunden.webp";
 
 const benefits = [
