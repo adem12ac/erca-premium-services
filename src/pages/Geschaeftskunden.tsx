@@ -1,12 +1,12 @@
 import { AnimatedSection } from "@/components/AnimatedSection";
 import { ContactForm } from "@/components/ContactForm";
-import { Building2, FileText, Clock, Users, CheckCircle2 } from "lucide-react";
+import { Building2, FileText, Users, CheckCircle2, Handshake } from "lucide-react";
 import { useSEO } from "@/hooks/useSEO";
 import heroImg from "@/assets/hero-geschaeftskunden.webp";
 
 const benefits = [
   { icon: FileText, title: "Rahmenverträge & SLAs", desc: "Individuelle Service-Level-Agreements nach Ihren Anforderungen." },
-  { icon: Clock, title: "Priorisierter Notdienst", desc: "Garantierte Reaktionszeiten für Ihre Objekte – 24/7." },
+  { icon: Handshake, title: "Persönlicher Ansprechpartner", desc: "Ein fester Projektleiter für alle Ihre Objekte und Anliegen." },
   { icon: Users, title: "Fester Ansprechpartner", desc: "Ein dedizierter Projektleiter für alle Ihre Objekte." },
   { icon: Building2, title: "Multi-Objekt-Betreuung", desc: "Effiziente Betreuung mehrerer Liegenschaften gleichzeitig." },
 ];
@@ -23,7 +23,7 @@ const targets = [
 const Geschaeftskunden = () => {
   useSEO({
     title: "Geschäftskunden – ERCA Dienstleistungen Essen | Objektbetreuung & Facility Management",
-    description: "ERCA für Geschäftskunden: Rahmenverträge, priorisierter Notdienst, Multi-Objekt-Betreuung für Hausverwaltungen, Pflegeheime & Investoren in Essen & NRW.",
+    description: "ERCA für Geschäftskunden: Rahmenverträge, Multi-Objekt-Betreuung für Hausverwaltungen, Pflegeheime & Investoren in Essen & NRW.",
     canonical: "https://erca-service.de/geschaeftskunden",
   });
 

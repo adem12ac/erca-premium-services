@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 import { Phone, Mail, MapPin, Clock } from "lucide-react";
 
-
 export const Footer = () => (
   <footer className="bg-navy text-primary-foreground" role="contentinfo">
     <div className="container py-16">
@@ -42,11 +41,10 @@ export const Footer = () => (
             <li><Link to="/zertifikate" className="hover:opacity-100 transition-opacity">Zertifikate</Link></li>
           </ul>
           <div className="mt-6">
-            <p className="text-xs font-bold uppercase tracking-wider opacity-50 mb-3">24h Notdienst</p>
             <a
               href="tel:+4915212971388"
               className="inline-flex items-center gap-2 rounded-lg bg-accent px-5 py-2.5 text-sm font-bold text-accent-foreground transition-opacity hover:opacity-90"
-              aria-label="24h Notdienst anrufen"
+              aria-label="Jetzt anrufen"
             >
               <Phone className="h-4 w-4" aria-hidden="true" /> Jetzt anrufen
             </a>

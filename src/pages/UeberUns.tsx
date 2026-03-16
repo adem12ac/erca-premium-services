@@ -6,7 +6,7 @@ import heroImg from "@/assets/hero-ueberuns.jpeg";
 const UeberUns = () => {
   useSEO({
     title: "Über uns – ERCA Dienstleistungen Essen | 30+ Jahre Erfahrung",
-    description: "Lernen Sie ERCA Dienstleistungen kennen: Inhabergeführt, über 30 Jahre Erfahrung, 25+ Zertifikate. Ihr zuverlässiger Partner für Gebäudeservice in Essen & NRW.",
+    description: "Lernen Sie ERCA Dienstleistungen kennen: Inhabergeführt von Erkan Catak, über 30 Jahre Erfahrung, 25+ Zertifikate. Ihr zuverlässiger Partner für Gebäudeservice in Essen & NRW.",
     canonical: "https://erca-service.de/ueber-uns",
   });
 
@@ -30,10 +30,22 @@ const UeberUns = () => {
       <div className="container max-w-3xl">
         <AnimatedSection>
           <p className="text-lg leading-relaxed text-muted-foreground">
-            ERCA Dienstleistungen ist ein inhabergeführtes Fachunternehmen aus Essen mit über 30 Jahren Branchenerfahrung. Gegründet und geführt von Erkan Catak, der 1993 mit einer fundierten technischen Ausbildung in den Bereichen Metallbau und Sanitärtechnik begann.
+            ERCA Dienstleistungen ist ein inhabergeführtes Unternehmen aus Essen, geführt von Erkan Catak mit über 30 Jahren praktischer Erfahrung im technischen Gebäude- und Handwerksbereich.
           </p>
           <p className="mt-6 text-lg leading-relaxed text-muted-foreground">
-            Heute betreuen wir Seniorenwohnanlagen, betreutes Wohnen, Studentenwohnheime und privatgenutzte Immobilien in Essen und der gesamten Region. Unser Anspruch: Jeder Auftrag wird mit der gleichen Sorgfalt ausgeführt – ob Routine-Begehung oder komplexe Sanierung.
+            Im Laufe seiner beruflichen Tätigkeit war er für die technische Betreuung mehrerer Pflegeheime, betreuter Wohnanlagen und weiterer Immobilien verantwortlich. Zusätzlich hat er über viele Jahre Renovierungs- und Sanierungsprojekte als Bauleiter begleitet und organisiert.
+          </p>
+          <p className="mt-6 text-lg leading-relaxed text-muted-foreground">
+            Durch zahlreiche fachliche Weiterbildungen und Zertifikate in Bereichen wie Gebäudetechnik, Elektrotechnik, Sanitärtechnik, Brandschutz und technischer Wartung verfügt ERCA Dienstleistungen über ein breites technisches Know-how.
+          </p>
+          <p className="mt-6 text-lg leading-relaxed text-muted-foreground font-medium text-foreground">
+            Unsere Arbeitsweise ist klar und transparent:
+          </p>
+          <p className="mt-2 text-lg leading-relaxed text-muted-foreground">
+            Detaillierte Angebote, offene Kostenaufstellungen, strukturierte Planung und saubere Dokumentation der Arbeiten.
+          </p>
+          <p className="mt-6 text-lg leading-relaxed text-muted-foreground">
+            Ob Renovierung, Sanierung, Entrümpelung oder technische Instandhaltung – wir packen an und sorgen dafür, dass Projekte zuverlässig und fachgerecht umgesetzt werden.
           </p>
         </AnimatedSection>
       </div>
@@ -41,10 +53,9 @@ const UeberUns = () => {
 
     <section className="bg-section-alt py-20">
       <div className="container">
-        <div className="grid grid-cols-2 gap-6 sm:grid-cols-4">
+        <div className="grid grid-cols-2 gap-6 sm:grid-cols-3">
           {[
             { icon: Clock, value: "30+", label: "Jahre Erfahrung" },
-            { icon: Award, value: "500+", label: "Projekte" },
             { icon: Shield, value: "25+", label: "Zertifikate" },
             { icon: Users, value: "100+", label: "Zufriedene Kunden" },
           ].map((s, i) => (
