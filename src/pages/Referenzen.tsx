@@ -9,7 +9,6 @@ const projects = [
   { title: "Objektbetreuung Studentenwohnheim", category: "Objektbetreuung", desc: "Full-Service-Gebäudemanagement für ein Studentenwohnheim mit 120 Apartments – inklusive Winterdienst und Grünanlagenpflege.", image: buildingImg },
   { title: "Badsanierung Pflegeheim", category: "Sanierung", desc: "Barrierefreie Badsanierung in einem Pflegeheim – 15 Einheiten nach DIN 18040 umgebaut.", image: renovationImg },
   { title: "Gebäudeservice Gewerbeimmobilie", category: "Gebäudeservice", desc: "Laufende technische Betreuung und Gebäudeservice für eine Gewerbeimmobilie in Essen-Rüttenscheid.", image: buildingImg },
-  { title: "Notdienst-Einsatz Rohrbruch", category: "Heizung & Sanitär", desc: "Sofortiger 24h-Notdienst-Einsatz bei Rohrbruch in einer Wohnanlage – Schadensbegrenzung und Reparatur innerhalb von 4 Stunden.", image: heatingImg },
 ];
 
 const Referenzen = () => (

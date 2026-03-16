@@ -46,7 +46,7 @@ export const Header = () => {
             aria-label="Jetzt anrufen: +49 152 1297 1388"
           >
             <Phone className="h-4 w-4" aria-hidden="true" />
-            Jetzt anrufen
+            Jetzt anrufen · +49 152 1297 1388
           </a>
         </div>
 

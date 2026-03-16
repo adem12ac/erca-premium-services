@@ -1,7 +1,7 @@
 import { AnimatedSection } from "@/components/AnimatedSection";
 import { ContactForm } from "@/components/ContactForm";
 import { WhatsAppButton } from "@/components/WhatsAppButton";
-import { Phone, Mail, MapPin, Clock, AlertCircle } from "lucide-react";
+import { Phone, Mail, MapPin, Clock } from "lucide-react";
 import { useSEO } from "@/hooks/useSEO";
 import heroImg from "@/assets/hero-kontakt.webp";
 
@@ -53,22 +53,13 @@ const Kontakt = () => {
                   </div>
                 </div>
               ))}
-              <div className="flex items-start gap-4 rounded-xl border border-accent bg-accent/10 p-4">
-                <div className="rounded-lg bg-accent/20 p-2.5">
-                  <AlertCircle className="h-5 w-5 text-accent" />
-                </div>
-                <div>
-                  <p className="text-xs font-semibold uppercase tracking-wider text-accent">24h Notdienst</p>
-                  <a href="tel:+4915212971388" className="font-bold text-foreground">+49 152 1297 1388</a>
-                </div>
-              </div>
               <WhatsAppButton label="Über WhatsApp kontaktieren" className="w-full justify-center" />
             </AnimatedSection>
           </div>
           <div className="lg:col-span-3">
             <AnimatedSection className="mb-6">
               <h2 className="font-display text-2xl font-bold text-foreground">Nachricht senden</h2>
-              <p className="mt-2 text-sm text-muted-foreground">Wir antworten innerhalb von 24 Stunden.</p>
+              <p className="mt-2 text-sm text-muted-foreground">Wir antworten schnellstmöglich.</p>
             </AnimatedSection>
             <ContactForm />
           </div>

@@ -14,7 +14,7 @@ import buildingImg from "@/assets/building.jpeg";
 
 import { useSEO } from "@/hooks/useSEO";
 
-// Certificate thumbnails – 4 new uploads as preview
+// Certificate thumbnails
 import cert01 from "@/assets/imgur/img18.jpeg";
 import cert02 from "@/assets/imgur/img16.jpeg";
 import cert03 from "@/assets/imgur/img17.jpeg";
@@ -22,9 +22,8 @@ import cert04 from "@/assets/imgur/img19.jpeg";
 
 const stats = [
   { value: "30+", label: "Jahre Erfahrung" },
-  { value: "500+", label: "Projekte realisiert" },
   { value: "25+", label: "Zertifikate" },
-  { value: "24h", label: "Notdienst" },
+  { value: "100+", label: "Zufriedene Kunden" },
 ];
 
 const trustBadges = [
@@ -77,7 +76,7 @@ const certPreviews = [
 const Index = () => {
   useSEO({
     title: "ERCA Dienstleistungen Essen – Hausmeisterservice, Sanierung & Gebäudeservice",
-    description: "ERCA Dienstleistungen in Essen: Hausmeisterservice, Sanierungen, Entrümpelung, barrierefreie Umbauten & Umzugsservice. Über 30 Jahre Erfahrung. ✓ TÜV-zertifiziert ✓ 24h Notdienst.",
+    description: "ERCA Dienstleistungen in Essen: Hausmeisterservice, Sanierungen, Entrümpelung, barrierefreie Umbauten & Umzugsservice. Über 30 Jahre Erfahrung. ✓ TÜV-zertifiziert.",
     canonical: "https://erca-service.de/",
   });
   return (
@@ -86,7 +85,7 @@ const Index = () => {
 
       {/* Stats */}
       <section className="border-b border-border bg-background">
-        <div className="container grid grid-cols-2 gap-8 py-14 md:grid-cols-4">
+        <div className="container grid grid-cols-3 gap-8 py-14">
           {stats.map((s, i) => (
             <AnimatedSection key={s.label} delay={i * 0.1} className="text-center">
               <p className="font-display text-4xl font-bold text-primary sm:text-5xl">{s.value}</p>
@@ -165,7 +164,7 @@ const Index = () => {
               Großprojekte verdienen Großkunden-Service
             </h2>
             <p className="mx-auto mt-5 max-w-2xl text-primary-foreground/70 leading-relaxed">
-              Hausverwaltungen, Investoren, Pflegeheim-Betreiber – wir sind Ihr strategischer Partner mit individuellen Rahmenverträgen und priorisiertem Notdienst.
+              Hausverwaltungen, Investoren, Pflegeheim-Betreiber – wir sind Ihr strategischer Partner mit individuellen Rahmenverträgen.
             </p>
             <div className="mt-10 flex flex-wrap justify-center gap-4">
               <Link

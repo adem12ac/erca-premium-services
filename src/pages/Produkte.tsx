@@ -1,32 +1,32 @@
-import { useState } from "react";
+import { useRef } from "react";
 import { AnimatedSection } from "@/components/AnimatedSection";
 import { ContactForm } from "@/components/ContactForm";
-import { ArrowRight, Trash2, Wrench, Building2, CheckCircle2 } from "lucide-react";
+import { ArrowRight, Trash2, Wrench, Building2, CheckCircle2, Accessibility, Truck, Home } from "lucide-react";
 import { useSEO } from "@/hooks/useSEO";
 
 const pricingTiers = [
   {
-    icon: Trash2,
-    name: "Entrümpelung",
-    price: "ab 20 €",
-    unit: "/ m²",
-    desc: "Fachgerechte Entrümpelung und umweltgerechte Entsorgung für Privat und Gewerbe.",
-    features: ["Kostenlose Vor-Ort-Besichtigung", "Umweltgerechte Entsorgung", "Besenreine Übergabe", "Kurzfristige Termine"],
+    icon: Home,
+    name: "Hausmeister-Paket Basis",
+    price: "ab 299 €",
+    unit: "/ Monat",
+    desc: "Regelmäßige Objektkontrollen, Kleinreparaturen, Winterdienst und Pflege der Außenanlagen. Zuverlässige Betreuung für einen reibungslosen Gebäudebetrieb.",
+    features: ["Regelmäßige Objektkontrollen", "Kleinreparaturen", "Winterdienst & Streupflicht", "Pflege der Außenanlagen"],
     highlight: false,
   },
   {
-    icon: Wrench,
-    name: "Renovierung",
-    price: "ab 120 €",
-    unit: "/ m²",
-    desc: "Von der Schönheitsrenovierung bis zur Teilsanierung – termingerecht und sauber.",
-    features: ["Malerarbeiten & Tapezieren", "Bodenbeläge verlegen", "Sanitär-Renovierung", "Festpreisangebot möglich"],
+    icon: Building2,
+    name: "Hausmeister-Paket Premium",
+    price: "ab 599 €",
+    unit: "/ Monat",
+    desc: "Basis-Leistungen plus technische Objektbetreuung, Brandschutzkontrollen, Wartungskoordination sowie Dokumentation der technischen Anlagen.",
+    features: ["Alle Basis-Leistungen inklusive", "Technische Objektbetreuung", "Brandschutzkontrollen", "Wartungskoordination", "Dokumentation technischer Anlagen"],
     highlight: true,
   },
   {
-    icon: Building2,
+    icon: Wrench,
     name: "Komplettsanierung",
-    price: "ab 800 €",
+    price: "ab 499 €",
     unit: "/ m²",
     desc: "Vollständige Sanierung inkl. aller Gewerke – schlüsselfertig und budgettreu.",
     features: ["Alle Gewerke aus einer Hand", "Barrierefreie Umbauten", "Projektmanagement inklusive", "Detaillierte Dokumentation"],
@@ -35,19 +35,27 @@ const pricingTiers = [
 ];
 
 const additionalServices = [
-  { name: "Hausmeister-Paket Basis", price: "ab 299 €/Monat", desc: "Regelmäßige Begehungen, Winterdienst, Grünanlagenpflege" },
-  { name: "Hausmeister-Paket Premium", price: "ab 599 €/Monat", desc: "Basis plus technisches Management, Brandschutzprüfung" },
-  { name: "Barrierefreie Badsanierung", price: "ab 4.999 €", desc: "Kompletter barrierefreier Badumbau nach DIN 18040" },
-  { name: "Umzugsservice", price: "auf Anfrage", desc: "Unkomplizierter Umzugsservice in Essen und Umgebung" },
+  { icon: Accessibility, name: "Barrierefreie Badsanierung", price: "ab 4.999 €", desc: "Kompletter barrierefreier Badumbau nach DIN 18040 – Planung, Umbau und Installation aus einer Hand." },
+  { icon: Truck, name: "Umzugsservice", price: "auf Anfrage", desc: "Umzüge, Möbelmontage, Entrümpelung und fachgerechte Entsorgung – zuverlässig in Essen und Umgebung." },
+  { icon: Trash2, name: "Entrümpelung", price: "ab 20 €/m²", desc: "Fachgerechte Entrümpelung und umweltgerechte Entsorgung für Privat und Gewerbe." },
 ];
 
 const Produkte = () => {
   useSEO({
     title: "Preise & Pakete – ERCA Dienstleistungen Essen | Transparente Kosten",
-    description: "Transparente Preise für Entrümpelung (ab 20€/m²), Renovierung (ab 120€/m²) und Komplettsanierung (ab 800€/m²). Kostenlose Vor-Ort-Besichtigung in Essen.",
+    description: "Transparente Preise: Hausmeister-Paket ab 299€/Monat, Komplettsanierung ab 499€/m², barrierefreie Badsanierung ab 4.999€. Kostenlose Beratung in Essen.",
     canonical: "https://erca-service.de/produkte",
   });
-  const [selectedProduct, setSelectedProduct] = useState<string | null>(null);
+
+  const formRef = useRef<HTMLDivElement>(null);
+  const selectedProductRef = useRef<string>("");
+
+  const scrollToForm = (productName: string) => {
+    selectedProductRef.current = productName;
+    if (formRef.current) {
+      formRef.current.scrollIntoView({ behavior: "smooth" });
+    }
+  };
 
   return (
     <div className="pt-20">
@@ -99,7 +107,7 @@ const Produkte = () => {
                     ))}
                   </ul>
                   <button
-                    onClick={() => setSelectedProduct(tier.name)}
+                    onClick={() => scrollToForm(tier.name)}
                     className={`mt-8 inline-flex items-center justify-center gap-2 rounded-xl px-6 py-3.5 text-sm font-semibold transition-all ${
                       tier.highlight
                         ? "bg-primary text-primary-foreground hover:opacity-90"
@@ -121,16 +129,19 @@ const Produkte = () => {
           <AnimatedSection className="text-center mb-14">
             <h2 className="font-display text-3xl font-bold text-foreground">Weitere Leistungspakete</h2>
           </AnimatedSection>
-          <div className="grid gap-6 sm:grid-cols-2">
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {additionalServices.map((s, i) => (
               <AnimatedSection key={s.name} delay={i * 0.08}>
                 <div className="flex h-full flex-col rounded-2xl border border-border bg-card p-7 shadow-card transition-all hover:shadow-card-hover">
+                  <div className="mb-4 inline-flex items-center justify-center rounded-xl bg-primary/8 p-3 w-fit">
+                    <s.icon className="h-5 w-5 text-primary" aria-hidden="true" />
+                  </div>
                   <h3 className="font-display text-lg font-bold text-foreground">{s.name}</h3>
                   <p className="mt-2 flex-1 text-sm text-muted-foreground leading-relaxed">{s.desc}</p>
                   <div className="mt-5 flex items-center justify-between">
                     <p className="font-display text-2xl font-bold text-primary">{s.price}</p>
                     <button
-                      onClick={() => setSelectedProduct(s.name)}
+                      onClick={() => scrollToForm(s.name)}
                       className="inline-flex items-center gap-1.5 text-sm font-semibold text-primary hover:underline"
                     >
                       Anfragen <ArrowRight className="h-4 w-4" />
@@ -143,17 +154,16 @@ const Produkte = () => {
         </div>
       </section>
 
-      {selectedProduct && (
-        <section className="border-t border-border py-20" id="anfrage">
-          <div className="container max-w-2xl">
-            <AnimatedSection className="text-center mb-10">
-              <h2 className="font-display text-3xl font-bold text-foreground">Angebot anfragen</h2>
-              <p className="mt-3 text-muted-foreground">für „{selectedProduct}"</p>
-            </AnimatedSection>
-            <ContactForm prefilledProduct={selectedProduct} variant="product" />
-          </div>
-        </section>
-      )}
+      {/* Contact Form - always visible */}
+      <section className="border-t border-border py-20" id="anfrage" ref={formRef}>
+        <div className="container max-w-2xl">
+          <AnimatedSection className="text-center mb-10">
+            <h2 className="font-display text-3xl font-bold text-foreground">Angebot anfragen</h2>
+            <p className="mt-3 text-muted-foreground">Wählen Sie oben ein Paket oder schildern Sie uns direkt Ihr Anliegen.</p>
+          </AnimatedSection>
+          <ContactForm />
+        </div>
+      </section>
     </div>
   );
 };
