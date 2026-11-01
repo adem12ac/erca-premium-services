@@ -10,7 +10,7 @@ const Impressum = () => (
           </div>
           <div>
             <h2 className="font-display text-lg font-bold text-foreground">Kontakt</h2>
-            <p className="mt-2">Telefon: +49 152 16 39 93 26<br/>E-Mail: info@erca-service.de</p>
+            <p className="mt-2">Mobil: +49 152 1639 9326<br/>Telefon: +49 201 8416 7404<br/>E-Mail: info@erca-service.de</p>
           </div>
           <div>
             <h2 className="font-display text-lg font-bold text-foreground">Haftung für Inhalte</h2>

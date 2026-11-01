@@ -14,7 +14,7 @@ const Datenschutz = () => (
           </div>
           <div>
             <h2 className="font-display text-lg font-bold text-foreground">3. Datenerfassung auf dieser Website</h2>
-            <p className="mt-2">Die Datenverarbeitung auf dieser Website erfolgt durch den Websitebetreiber. Wenn Sie uns per Kontaktformular Anfragen zukommen lassen, werden Ihre Angaben inklusive der von Ihnen dort angegebenen Kontaktdaten zwecks Bearbeitung der Anfrage und für den Fall von Anschlussfragen bei uns gespeichert. Diese Daten geben wir nicht ohne Ihre Einwilligung weiter.</p>
+            <p className="mt-2">Die Datenverarbeitung auf dieser Website erfolgt durch den Websitebetreiber. Das Anfrageformular erstellt lokal einen E-Mail-Entwurf in Ihrem E-Mail-Programm. Erst wenn Sie diesen absenden, erhalten wir Ihre Angaben und verwenden sie zur Bearbeitung Ihrer Anfrage. Die Website selbst speichert keine Formulareingaben.</p>
           </div>
           <div>
             <h2 className="font-display text-lg font-bold text-foreground">4. Ihre Rechte</h2>

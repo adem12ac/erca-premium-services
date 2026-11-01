@@ -1,252 +1,546 @@
-import { AnimatedSection } from "@/components/AnimatedSection";
-import { WhatsAppButton } from "@/components/WhatsAppButton";
-import { ContactForm } from "@/components/ContactForm";
-import { HeroSlider } from "@/components/HeroSlider";
-import { BeforeAfterSection } from "@/components/BeforeAfterSlider";
 import { Link } from "react-router-dom";
-import { ArrowRight, Shield, Clock, Award, Wrench, Building2, Trash2, Accessibility, Truck, CheckCircle2, Phone } from "lucide-react";
-import renovationImg from "@/assets/renovation.jpeg";
-import hausmeisterImg from "@/assets/hausmeister.jpg";
-import entruempelungImg from "@/assets/entruempelung.jpg";
-import umzugImg from "@/assets/umzugsservice.jpg";
-import barrierefreiImg from "@/assets/barrierefrei.jpg";
-import buildingImg from "@/assets/building.jpeg";
-
-import { useSEO } from "@/hooks/useSEO";
-
-// Certificate thumbnails
-import cert01 from "@/assets/imgur/img18.jpeg";
-import cert02 from "@/assets/imgur/img16.jpeg";
-import cert03 from "@/assets/imgur/img17.jpeg";
-import cert04 from "@/assets/imgur/img19.jpeg";
-
-const stats = [
-  { value: "30+", label: "Jahre Erfahrung" },
-  { value: "25+", label: "Zertifikate" },
-  { value: "100+", label: "Zufriedene Kunden" },
-];
-
-const trustBadges = [
-  { icon: Shield, text: "TÜV-zertifiziert" },
-  { icon: CheckCircle2, text: "Versichert & haftpflichtgeschützt" },
-  { icon: Clock, text: "Schnelle Reaktionszeiten" },
-  { icon: Award, text: "Alles aus einer Hand" },
-];
+import { useState, type FormEvent } from "react";
+import {
+  ArrowUpRight,
+  ArrowRight,
+  Menu,
+  X,
+  Phone,
+  Mail,
+  MessageCircle,
+  Plus,
+  Minus,
+} from "lucide-react";
+import { Brand, BrandWave } from "../components/Brand";
 
 const services = [
   {
-    icon: Building2,
-    title: "Objektbetreuung / Hausmeisterservice",
-    desc: "Technisches Gebäudemanagement, regelmäßige Begehungen, Winterdienst und Grünanlagenpflege – zuverlässig und dokumentiert.",
-    image: hausmeisterImg,
+    id: "ladenbau",
+    n: "01",
+    title: "Ladenbau",
+    lead: "Ein Raum für Ihre Marke.",
+    text: "Vom ersten Raumkonzept bis zur fertigen Verkaufsfläche: Wir begleiten Ihren Ladenausbau und stimmen Gestaltung, Einrichtung und Umsetzung aufeinander ab.",
+    details: [
+      "Raumaufteilung & Gestaltung",
+      "Abstimmung der Ausbauarbeiten",
+      "Inneneinrichtung & Möblierung mit Partnerfirmen",
+    ],
   },
   {
-    icon: Wrench,
-    title: "Sanierungen & Renovierungen",
-    desc: "Von der Schönheitsrenovierung bis zur Komplettsanierung – termingerecht und budgettreu. Alles aus einer Hand.",
-    image: renovationImg,
+    id: "innenausbau",
+    n: "02",
+    title: "Innenausbau",
+    lead: "Aus Fläche wird Raum.",
+    text: "Wir verbinden Ihre Vorstellungen mit einer durchdachten Raumgestaltung. Die einzelnen Schritte des Innenausbaus werden gemeinsam geplant und mit den passenden Partnerfirmen abgestimmt.",
+    details: [
+      "Planung der Innenräume",
+      "Koordination der beteiligten Partner",
+      "Abgestimmte Materialien & Einrichtung",
+    ],
   },
   {
-    icon: Trash2,
-    title: "Entsorgung & Entrümpelung",
-    desc: "Fachgerechte Entrümpelung und Entsorgung für Privat und Gewerbe – schnell, sauber und umweltgerecht.",
-    image: entruempelungImg,
-  },
-  {
-    icon: Accessibility,
-    title: "Barrierefreie Sanierungen",
-    desc: "Barrierefreie Umbauten nach DIN 18040 – für Pflegeheime, Seniorenwohnanlagen und Privatimmobilien.",
-    image: barrierefreiImg,
-  },
-  {
-    icon: Truck,
-    title: "Umzugsservice",
-    desc: "Unkomplizierter Umzugsservice für Privatkunden – innerhalb Essen und Umgebung.",
-    image: umzugImg,
+    id: "renovierungen",
+    n: "03",
+    title: "Renovierungen",
+    lead: "Neuer Charakter. Neue Möglichkeiten.",
+    text: "Bestehende Räume neu denken: Gemeinsam klären wir, was bleiben soll und was sich verändern darf. Anschließend begleiten wir die Renovierung bis zur Fertigstellung.",
+    details: [
+      "Bestand & Wünsche gemeinsam besprechen",
+      "Renovierungsumfang und Ablauf planen",
+      "Umsetzung bis zur Fertigstellung begleiten",
+    ],
   },
 ];
-
-const certPreviews = [
-  { img: cert01, label: "TÜV SÜD – Aufzugswärter" },
-  { img: cert02, label: "TÜV – Brandschutztüren" },
-  { img: cert03, label: "TÜV – Haustechnik B" },
-  { img: cert04, label: "Elektrotechnik – EuP" },
+const nav = [
+  ["Leistungen", "#leistungen"],
+  ["Über ERCA", "#geschichte"],
+  ["Netzwerk", "#netzwerk"],
+  ["Ablauf", "#ablauf"],
 ];
 
-const Index = () => {
-  useSEO({
-    title: "ERCA Dienstleistungen Essen – Hausmeisterservice, Sanierung & Gebäudeservice",
-    description: "ERCA Dienstleistungen in Essen: Hausmeisterservice, Sanierungen, Entrümpelung, barrierefreie Umbauten & Umzugsservice. Über 30 Jahre Erfahrung. ✓ TÜV-zertifiziert.",
-    canonical: "https://erca-service.de/",
-  });
+export default function Home() {
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [activeService, setActiveService] = useState<string | null>("ladenbau");
+  const [emailPrepared, setEmailPrepared] = useState(false);
+  function prepareEmail(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    const data = new FormData(event.currentTarget);
+    const body = `Guten Tag Herr Catak,\n\n${data.get("message")}\n\nLeistung: ${data.get("service")}\nName: ${data.get("name")}\nE-Mail: ${data.get("email")}\nTelefon: ${data.get("phone") || "Nicht angegeben"}`;
+    window.location.href = `mailto:info@erca-service.de?subject=${encodeURIComponent(`Projektanfrage: ${data.get("service")}`)}&body=${encodeURIComponent(body)}`;
+    setEmailPrepared(true);
+  }
   return (
-    <div className="flex flex-col">
-      <HeroSlider />
-
-      {/* Stats */}
-      <section className="border-b border-border bg-background">
-        <div className="container grid grid-cols-3 gap-8 py-14">
-          {stats.map((s, i) => (
-            <AnimatedSection key={s.label} delay={i * 0.1} className="text-center">
-              <p className="font-display text-4xl font-bold text-primary sm:text-5xl">{s.value}</p>
-              <p className="mt-2 text-sm text-muted-foreground">{s.label}</p>
-            </AnimatedSection>
-          ))}
+    <>
+      <a className="skip-link" href="#inhalt">
+        Zum Inhalt springen
+      </a>
+      <div className="topline">
+        <div className="wrap">
+          <span>ESSEN · EUROPAWEIT VERNETZT</span>
+          <a href="tel:+4920184167404">
+            +49 201 8416 7404 <ArrowUpRight size={13} />
+          </a>
         </div>
-      </section>
-
-      {/* Trust */}
-      <section className="bg-section-alt" aria-label="Vertrauenssignale">
-        <div className="container flex flex-wrap items-center justify-center gap-8 py-8 md:gap-12">
-          {trustBadges.map((b) => (
-            <div key={b.text} className="flex items-center gap-2.5 text-sm font-medium text-muted-foreground">
-              <b.icon className="h-5 w-5 text-green" aria-hidden="true" />
-              {b.text}
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* Services */}
-      <section className="py-24 lg:py-32" aria-labelledby="services-heading">
-        <div className="container">
-          <AnimatedSection className="text-center">
-            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-green">Unser Leistungsspektrum</p>
-            <h2 id="services-heading" className="mt-4 font-display text-3xl font-bold text-foreground sm:text-4xl lg:text-[2.75rem]">
-              Fünf Fachbereiche. Ein kompetenter Partner.
-            </h2>
-            <p className="mx-auto mt-5 max-w-2xl text-muted-foreground leading-relaxed">
-              Wir bieten ein vollständiges Dienstleistungsportfolio rund um Ihre Immobilie – von der täglichen Betreuung bis zur umfassenden Sanierung.
-            </p>
-          </AnimatedSection>
-          <div className="mt-16 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-            {services.map((s, i) => (
-              <AnimatedSection key={s.title} delay={i * 0.08}>
-                <div className="group overflow-hidden rounded-2xl border border-border bg-card shadow-card transition-all duration-300 hover:shadow-card-hover h-full flex flex-col">
-                  <div className="aspect-[16/9] overflow-hidden">
-                    <img
-                      src={s.image}
-                      alt={s.title}
-                      loading="lazy"
-                      className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
-                    />
-                  </div>
-                  <div className="p-7 flex flex-col flex-1">
-                    <div className="mb-4 inline-flex items-center justify-center rounded-xl bg-primary/8 p-3 w-fit">
-                      <s.icon className="h-5 w-5 text-primary" aria-hidden="true" />
-                    </div>
-                    <h3 className="font-display text-lg font-bold text-foreground">{s.title}</h3>
-                    <p className="mt-2 flex-1 text-sm leading-relaxed text-muted-foreground">{s.desc}</p>
-                    <Link to="/leistungen" className="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-primary hover:underline">
-                      Mehr erfahren <ArrowRight className="h-4 w-4" />
-                    </Link>
-                  </div>
-                </div>
-              </AnimatedSection>
+      </div>
+      <header className="site-header">
+        <div className="wrap header-inner">
+          <a href="#" className="brand-link" aria-label="ERCA – zur Startseite">
+            <Brand />
+          </a>
+          <nav className="desktop-nav" aria-label="Hauptnavigation">
+            {nav.map(([label, href]) => (
+              <a key={href} href={href}>
+                {label}
+              </a>
             ))}
-          </div>
+          </nav>
+          <a href="#kontakt" className="button button-small header-cta">
+            Projekt besprechen <ArrowUpRight size={17} />
+          </a>
+          <button
+            className="menu-toggle"
+            aria-label={menuOpen ? "Menü schließen" : "Menü öffnen"}
+            aria-expanded={menuOpen}
+            aria-controls="mobile-menu"
+            onClick={() => setMenuOpen(!menuOpen)}
+          >
+            {menuOpen ? <X /> : <Menu />}
+          </button>
         </div>
-      </section>
-
-      {/* Before/After */}
-      <BeforeAfterSection />
-
-      {/* CTA For Business */}
-      <section className="relative overflow-hidden py-24" aria-labelledby="business-heading">
-        <div className="absolute inset-0 -z-10">
-          <img src={buildingImg} alt="" className="h-full w-full object-cover" loading="lazy" aria-hidden="true" />
-          <div className="absolute inset-0 bg-foreground/80 backdrop-blur-sm" />
-        </div>
-        <div className="container text-center">
-          <AnimatedSection>
-            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-accent">Für Geschäftskunden</p>
-            <h2 id="business-heading" className="mt-4 font-display text-3xl font-bold text-primary-foreground sm:text-4xl lg:text-[2.75rem]">
-              Großprojekte verdienen Großkunden-Service
-            </h2>
-            <p className="mx-auto mt-5 max-w-2xl text-primary-foreground/70 leading-relaxed">
-              Hausverwaltungen, Investoren, Pflegeheim-Betreiber – wir sind Ihr strategischer Partner mit individuellen Rahmenverträgen.
-            </p>
-            <div className="mt-10 flex flex-wrap justify-center gap-4">
-              <Link
-                to="/geschaeftskunden"
-                className="inline-flex items-center gap-2 rounded-xl bg-accent px-8 py-4 font-semibold text-accent-foreground transition-opacity hover:opacity-90"
-              >
-                Partnerschaft anfragen <ArrowRight className="h-4 w-4" />
-              </Link>
-            </div>
-          </AnimatedSection>
-        </div>
-      </section>
-
-      {/* Certificates Preview */}
-      <section className="py-24 lg:py-32 bg-section-alt" aria-labelledby="cert-heading">
-        <div className="container">
-          <AnimatedSection className="text-center">
-            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-green">Qualitätssicherung</p>
-            <h2 id="cert-heading" className="mt-4 font-display text-3xl font-bold text-foreground sm:text-4xl">
-              Zertifiziert & Qualifiziert
-            </h2>
-            <p className="mx-auto mt-5 max-w-2xl text-muted-foreground leading-relaxed">
-              Über 30 Jahre kontinuierliche Weiterbildung bei TÜV, Würth Akademie, BGW und weiteren renommierten Institutionen.
-            </p>
-          </AnimatedSection>
-          <div className="mt-14 grid grid-cols-2 gap-6 sm:grid-cols-4">
-            {certPreviews.map((cert, i) => (
-              <AnimatedSection key={cert.label} delay={i * 0.1}>
-                <div className="group overflow-hidden rounded-2xl border border-border bg-card shadow-card transition-all duration-300 hover:shadow-card-hover">
-                  <div className="aspect-[3/4] overflow-hidden bg-muted">
-                    <img
-                      src={cert.img}
-                      alt={`Zertifikat ${cert.label}`}
-                      loading="lazy"
-                      className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-                    />
-                  </div>
-                  <div className="p-4 text-center">
-                    <p className="font-display text-sm font-bold text-foreground">{cert.label}</p>
-                    <p className="mt-0.5 text-xs text-muted-foreground">Zertifiziert</p>
-                  </div>
-                </div>
-              </AnimatedSection>
+        {menuOpen && (
+          <nav
+            id="mobile-menu"
+            className="mobile-nav"
+            aria-label="Mobile Navigation"
+            onKeyDown={(e) => {
+              if (e.key === "Escape") setMenuOpen(false);
+            }}
+          >
+            {[...nav, ["Kontakt", "#kontakt"]].map(([label, href]) => (
+              <a key={href} href={href} onClick={() => setMenuOpen(false)}>
+                {label}
+                <ArrowUpRight size={18} />
+              </a>
             ))}
-          </div>
-          <AnimatedSection className="mt-10 text-center">
-            <Link
-              to="/zertifikate"
-              className="inline-flex items-center gap-2 rounded-xl border-2 border-primary px-7 py-3.5 font-semibold text-primary transition-colors hover:bg-primary hover:text-primary-foreground"
-            >
-              Alle Zertifikate ansehen <ArrowRight className="h-4 w-4" />
-            </Link>
-          </AnimatedSection>
-        </div>
-      </section>
-
-      {/* Contact CTA */}
-      <section className="py-24 lg:py-32" aria-labelledby="contact-heading">
-        <div className="container">
-          <div className="grid gap-14 lg:grid-cols-2">
-            <AnimatedSection>
-              <p className="text-sm font-semibold uppercase tracking-[0.2em] text-green">Kontakt</p>
-              <h2 id="contact-heading" className="mt-4 font-display text-3xl font-bold text-foreground sm:text-4xl">
-                Holen Sie sich jetzt Ihr Angebot
-              </h2>
-              <p className="mt-5 text-muted-foreground leading-relaxed">
-                Haben Sie Fragen zu unseren Dienstleistungen oder möchten Sie ein individuelles Angebot? Wir sind für Sie da.
+          </nav>
+        )}
+      </header>
+      <main id="inhalt">
+        <section className="hero">
+          <div className="wrap hero-grid">
+            <div className="hero-copy">
+              <p className="eyebrow">
+                <span /> LADENBAU · INNENAUSBAU · RENOVIERUNGEN
               </p>
-              <div className="mt-8 space-y-4">
-                <div className="flex items-center gap-3">
-                  <Phone className="h-5 w-5 text-primary" aria-hidden="true" />
-                  <a href="tel:+4915212971388" className="font-medium hover:underline">+49 152 1297 1388</a>
-                </div>
-                <WhatsAppButton label="Über WhatsApp kontaktieren" />
+              <h1>
+                Ihre Vision.
+                <br />
+                Unser Handwerk.
+                <br />
+                <em>Neue Räume.</em>
+              </h1>
+              <p className="hero-lead">Von der Planung bis zur Fertigstellung.</p>
+              <p className="hero-description">
+                Erkan Catak verbindet 30 Jahre Erfahrung mit einem europaweiten Netzwerk. Für Räume,
+                die zu Ihnen passen – bis ins Detail.
+              </p>
+              <div className="hero-actions">
+                <a href="#kontakt" className="button">
+                  Ihr Projekt beginnt hier <ArrowUpRight size={19} />
+                </a>
+                <a href="#leistungen" className="text-link">
+                  Leistungen entdecken <ArrowRight size={17} />
+                </a>
               </div>
-            </AnimatedSection>
-            <ContactForm />
+              <div className="hero-signature">
+                <span className="signature-line" />
+                <span>
+                  <strong>Erkan Catak</strong>
+                  <small>Ihr persönlicher Ansprechpartner</small>
+                </span>
+              </div>
+            </div>
+            <div className="hero-visual">
+              <div className="architecture-scene">
+                <img
+                  src="/interior-inspiration.jpg"
+                  alt="Heller Innenraum mit Holzlamellen, Glastrennwand und moderner Einrichtung – Inspirationsbild"
+                  width={1800}
+                  height={1200}
+                  fetchPriority="high"
+                />
+              </div>
+              <div className="experience-tag">
+                <strong>
+                  30<span>Jahre</span>
+                </strong>
+                <p>
+                  Erfahrung, die
+                  <br />
+                  Räume verändert.
+                </p>
+              </div>
+              <div className="visual-note">
+                <span>INSPIRATION / INNENAUSBAU</span>
+                <span>PLANEN. GESTALTEN. UMSETZEN.</span>
+              </div>
+            </div>
+          </div>
+          <BrandWave />
+        </section>
+        <section id="leistungen" className="section services-section">
+          <div className="wrap">
+            <div className="section-heading">
+              <div>
+                <p className="eyebrow">01 / UNSERE LEISTUNGEN</p>
+                <h2>
+                  Drei Schwerpunkte.
+                  <br />
+                  Ein Ansprechpartner.
+                </h2>
+              </div>
+              <p>
+                Wir bringen Planung, Ausbau und Einrichtung zusammen. Klar abgestimmt. Persönlich
+                begleitet.
+              </p>
+            </div>
+            <div className="service-list">
+              {services.map((service) => (
+                <article
+                  className={`service-row ${activeService === service.id ? "service-open" : ""}`}
+                  key={service.id}
+                >
+                  <h3>
+                    <button
+                      className="service-trigger"
+                      id={`${service.id}-trigger`}
+                      aria-expanded={activeService === service.id}
+                      aria-controls={`${service.id}-content`}
+                      onClick={() =>
+                        setActiveService(activeService === service.id ? null : service.id)
+                      }
+                    >
+                      <span className="service-number">{service.n}</span>
+                      <span>{service.title}</span>
+                      <span className="service-short">{service.lead}</span>
+                      <span className="service-icon">
+                        {activeService === service.id ? <Minus /> : <Plus />}
+                      </span>
+                    </button>
+                  </h3>
+                  <div
+                    id={`${service.id}-content`}
+                    role="region"
+                    aria-labelledby={`${service.id}-trigger`}
+                    hidden={activeService !== service.id}
+                    className="service-content"
+                  >
+                    <p>{service.text}</p>
+                    <ul>
+                      {service.details.map((detail) => (
+                        <li key={detail}>
+                          <span /> {detail}
+                        </li>
+                      ))}
+                    </ul>
+                    <a className="text-link" href="#kontakt">
+                      Projekt besprechen <ArrowUpRight size={18} />
+                    </a>
+                  </div>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+        <section id="geschichte" className="section story-section">
+          <div className="wrap story-grid">
+            <div className="story-number">
+              <p className="eyebrow">ERFAHRUNG HAT EINEN NAMEN.</p>
+              <div>
+                30<span>Jahre</span>
+              </div>
+              <p>
+                Menschen. Räume.
+                <br />
+                Gewachsene Verbindungen.
+              </p>
+              <span className="story-rule" />
+            </div>
+            <div className="story-copy">
+              <p className="eyebrow">02 / ERKAN CATAK & ERCA</p>
+              <h2>
+                Erfahrung im Blick.
+                <br />
+                Ihr Projekt im Mittelpunkt.
+              </h2>
+              <p className="large-copy">
+                Hinter ERCA steht Erkan Catak – mit 30 Jahren Erfahrung und der Überzeugung, dass
+                gute Räume mit einem persönlichen Gespräch beginnen.
+              </p>
+              <p>
+                Über die Jahre ist ein weitreichendes Netzwerk aus Kontakten, Beziehungen und
+                Partnerschaften in ganz Europa gewachsen. Dieses Zusammenspiel aus Erfahrung und
+                verlässlichen Verbindungen prägt die Arbeit von ERCA.
+              </p>
+              <p>
+                Ob Ladenausbau, Innenausbau oder Renovierung: Erkan Catak bringt die passenden
+                Menschen und Ideen zusammen. Mit einem Blick für Ihre Wünsche und einer persönlichen
+                Begleitung von der Planung bis zur Fertigstellung.
+              </p>
+              <div className="story-signoff">
+                <strong>Erkan Catak</strong>
+                <span>ERCA Dienstleistungen · Essen</span>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section id="netzwerk" className="section network-section">
+          <div className="wrap">
+            <div className="section-heading">
+              <div>
+                <p className="eyebrow">03 / UNSER NETZWERK</p>
+                <h2>
+                  In Essen zu Hause.
+                  <br />
+                  <em>In Europa verbunden.</em>
+                </h2>
+              </div>
+              <p>
+                Gute Zusammenarbeit kennt keine Grenzen. Unser Netzwerk verbindet Erfahrung vor Ort
+                mit den Möglichkeiten europaweiter Partnerschaften.
+              </p>
+            </div>
+            <div className="network-grid">
+              <div className="network-art" aria-hidden="true">
+                <span className="orbit orbit-one" />
+                <span className="orbit orbit-two" />
+                <span className="orbit orbit-three" />
+                <span className="network-center">
+                  ERCA<small>ESSEN</small>
+                </span>
+                <span className="network-dot dot-one" />
+                <span className="network-dot dot-two" />
+                <span className="network-dot dot-three" />
+                <span className="network-dot dot-four" />
+                <span className="network-label">EUROPAWEIT VERNETZT</span>
+              </div>
+              <div className="network-details">
+                {[
+                  [
+                    "Kontakte, die verbinden.",
+                    "Langjährig gewachsene Beziehungen erleichtern die Abstimmung und bringen die richtigen Ansprechpartner für Ihr Vorhaben zusammen.",
+                  ],
+                  [
+                    "Partner, die ergänzen.",
+                    "Je nach Projekt beziehen wir passende Partnerfirmen ein und koordinieren die Zusammenarbeit für Ladenbau, Innenausbau und Renovierungen.",
+                  ],
+                  [
+                    "Einrichtung, die passt.",
+                    "Inneneinrichtung und Möblierung denken wir von Anfang an mit – gemeinsam mit Partnerfirmen und passend zu Ihrem Raumkonzept.",
+                  ],
+                ].map(([title, text], i) => (
+                  <div key={title}>
+                    <span>0{i + 1}</span>
+                    <div>
+                      <h3>{title}</h3>
+                      <p>{text}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+        <section id="ablauf" className="section process-section">
+          <div className="wrap">
+            <div className="section-heading">
+              <div>
+                <p className="eyebrow">04 / SO ARBEITEN WIR</p>
+                <h2>
+                  Von der ersten Idee.
+                  <br />
+                  Bis zum letzten Detail.
+                </h2>
+              </div>
+              <a href="#kontakt" className="text-link">
+                Lassen Sie uns sprechen <ArrowUpRight size={18} />
+              </a>
+            </div>
+            <div className="process-grid">
+              {[
+                [
+                  "Zuhören.",
+                  "Wir besprechen Ihre Wünsche, den Raum und den Umfang Ihres Vorhabens.",
+                ],
+                [
+                  "Planen.",
+                  "Wir stimmen Konzept, Materialien und den Ablauf gemeinsam mit Ihnen ab.",
+                ],
+                [
+                  "Verbinden.",
+                  "Wir bringen passende Partnerfirmen zusammen und koordinieren die nächsten Schritte.",
+                ],
+                ["Umsetzen.", "Wir begleiten Ausbau und Einrichtung bis zur Fertigstellung."],
+              ].map(([title, text], i) => (
+                <article key={title}>
+                  <div className="process-index">
+                    <span>0{i + 1}</span>
+                    <ArrowRight size={20} />
+                  </div>
+                  <h3>{title}</h3>
+                  <p>{text}</p>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+        <section id="kontakt" className="section contact-section">
+          <div className="wrap contact-grid">
+            <div>
+              <p className="eyebrow">05 / KONTAKT</p>
+              <h2>
+                Ihr nächstes Projekt?
+                <br />
+                <em>Fängt mit uns an.</em>
+              </h2>
+              <p className="contact-intro">
+                Erzählen Sie uns, was Sie vorhaben.
+                <br />
+                Erkan Catak freut sich auf Ihre Ideen.
+              </p>
+              <div className="contact-links">
+                <a href="tel:+4915216399326">
+                  <Phone size={20} />
+                  <span>
+                    <small>Mobil</small>+49 152 1639 9326
+                  </span>
+                  <ArrowUpRight size={20} />
+                </a>
+                <a href="tel:+4920184167404">
+                  <Phone size={20} />
+                  <span>
+                    <small>Telefon</small>+49 201 8416 7404
+                  </span>
+                  <ArrowUpRight size={20} />
+                </a>
+                <a href="mailto:info@erca-service.de">
+                  <Mail size={20} />
+                  <span>
+                    <small>E-Mail</small>info@erca-service.de
+                  </span>
+                  <ArrowUpRight size={20} />
+                </a>
+              </div>
+              <a
+                href="https://wa.me/4915216399326"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="whatsapp-link"
+              >
+                <MessageCircle size={20} /> Direkt über WhatsApp schreiben{" "}
+                <ArrowUpRight size={17} />
+              </a>
+            </div>
+            <form className="contact-form" onSubmit={prepareEmail}>
+              <h3>Was haben Sie vor?</h3>
+              <p>
+                Bereiten Sie Ihre Anfrage vor und senden Sie sie anschließend in Ihrem
+                E-Mail-Programm.
+              </p>
+              <div className="form-grid">
+                <label>
+                  Ihr Name *
+                  <input
+                    name="name"
+                    autoComplete="name"
+                    required
+                    maxLength={100}
+                    placeholder="Vor- und Nachname"
+                  />
+                </label>
+                <label>
+                  E-Mail *
+                  <input
+                    name="email"
+                    autoComplete="email"
+                    type="email"
+                    required
+                    maxLength={150}
+                    placeholder="ihre@email.de"
+                  />
+                </label>
+                <label>
+                  Telefon
+                  <input
+                    name="phone"
+                    autoComplete="tel"
+                    type="tel"
+                    maxLength={50}
+                    placeholder="Für einen Rückruf"
+                  />
+                </label>
+                <label>
+                  Ihr Vorhaben
+                  <select name="service" defaultValue="Ladenbau">
+                    <option>Ladenbau</option>
+                    <option>Innenausbau</option>
+                    <option>Renovierungen</option>
+                    <option>Mehrere Leistungen</option>
+                  </select>
+                </label>
+              </div>
+              <label>
+                Ihre Idee *
+                <textarea
+                  name="message"
+                  required
+                  rows={4}
+                  maxLength={2500}
+                  placeholder="Was möchten Sie verändern? Wo befindet sich das Projekt?"
+                />
+              </label>
+              <p className="form-privacy">
+                Ihre Angaben werden erst versendet, wenn Sie die E-Mail abschicken. Hinweise zur
+                Verarbeitung finden Sie im <Link to="/datenschutz">Datenschutz</Link>.
+              </p>
+              <button type="submit" className="button">
+                E-Mail-Anfrage vorbereiten <ArrowUpRight size={18} />
+              </button>
+              {emailPrepared && (
+                <p role="status" className="form-status">
+                  Die Anfrage wurde für Ihr E-Mail-Programm vorbereitet. Bitte senden Sie sie dort
+                  ab. Falls sich kein Programm öffnet, schreiben Sie direkt an{" "}
+                  <a href="mailto:info@erca-service.de">info@erca-service.de</a>.
+                </p>
+              )}
+            </form>
+          </div>
+        </section>
+      </main>
+      <footer className="site-footer">
+        <BrandWave />
+        <div className="wrap footer-top">
+          <a href="#" aria-label="ERCA – zur Startseite">
+            <Brand light />
+          </a>
+          <p>
+            Ladenbau · Innenausbau · Renovierungen
+            <br />
+            <strong>Von der Planung bis zur Fertigstellung.</strong>
+          </p>
+          <a href="https://www.erca-service.de">
+            www.erca-service.de <ArrowUpRight size={16} />
+          </a>
+        </div>
+        <div className="wrap footer-bottom">
+          <span>© {new Date().getFullYear()} ERCA Dienstleistungen · Erkan Catak</span>
+          <div>
+            <Link to="/impressum">Impressum</Link>
+            <Link to="/datenschutz">Datenschutz</Link>
+            <a href="#">Nach oben ↑</a>
           </div>
         </div>
-      </section>
-    </div>
+      </footer>
+    </>
   );
-};
-
-export default Index;
+}
