@@ -1,4 +1,9 @@
 import { Link } from "react-router-dom";
+import { useEffect } from "react";
+import heroBanner from "@/assets/hero-banner.jpg";
+import imgLaden from "@/assets/service-ladenbau.jpg";
+import imgInnen from "@/assets/service-innenausbau.jpg";
+import imgReno from "@/assets/service-renovierungen.jpg";
 import { useState, type FormEvent } from "react";
 import {
   ArrowUpRight,
@@ -8,8 +13,6 @@ import {
   Phone,
   Mail,
   MessageCircle,
-  Plus,
-  Minus,
 } from "lucide-react";
 import { Brand, BrandWave } from "../components/Brand";
 
@@ -18,8 +21,10 @@ const services = [
     id: "ladenbau",
     n: "01",
     title: "Ladenbau",
-    lead: "Ein Raum für Ihre Marke.",
-    text: "Vom ersten Raumkonzept bis zur fertigen Verkaufsfläche: Wir begleiten Ihren Ladenausbau und stimmen Gestaltung, Einrichtung und Umsetzung aufeinander ab.",
+    lead: "Verkaufsflächen, die Ihre Marke erlebbar machen.",
+    image: imgLaden,
+    alt: "Moderner Ladenbau mit beleuchteten Holzregalen und Verkaufstheke",
+    text: "Vom ersten Raumkonzept bis zur Eröffnung: Wir stimmen Gestaltung, Ausbau und Einrichtung so aufeinander ab, dass Ihre Fläche funktioniert – für Kunden und Team.",
     details: [
       "Raumaufteilung & Gestaltung",
       "Abstimmung der Ausbauarbeiten",
@@ -30,7 +35,9 @@ const services = [
     id: "innenausbau",
     n: "02",
     title: "Innenausbau",
-    lead: "Aus Fläche wird Raum.",
+    lead: "Aus Fläche wird ein durchdachter Raum.",
+    image: imgInnen,
+    alt: "Innenausbau mit Trockenbauwänden und Glastrennwand im Büro",
     text: "Wir verbinden Ihre Vorstellungen mit einer durchdachten Raumgestaltung. Die einzelnen Schritte des Innenausbaus werden gemeinsam geplant und mit den passenden Partnerfirmen abgestimmt.",
     details: [
       "Planung der Innenräume",
@@ -42,7 +49,9 @@ const services = [
     id: "renovierungen",
     n: "03",
     title: "Renovierungen",
-    lead: "Neuer Charakter. Neue Möglichkeiten.",
+    lead: "Bestehendes neu denken – mit Gefühl für den Bestand.",
+    image: imgReno,
+    alt: "Frisch renovierter Wohnraum mit Fischgrätparkett und Stuck",
     text: "Bestehende Räume neu denken: Gemeinsam klären wir, was bleiben soll und was sich verändern darf. Anschließend begleiten wir die Renovierung bis zur Fertigstellung.",
     details: [
       "Bestand & Wünsche gemeinsam besprechen",
@@ -60,7 +69,13 @@ const nav = [
 
 export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [activeService, setActiveService] = useState<string | null>("ladenbau");
+  useEffect(() => {
+    const els = document.querySelectorAll(".reveal, .section-heading, .story-grid > *, .network-details > div, .process-grid > article, .contact-grid > *");
+    els.forEach((el) => el.classList.add("reveal"));
+    const io = new IntersectionObserver((entries) => entries.forEach((e) => { if (e.isIntersecting) { e.target.classList.add("is-visible"); io.unobserve(e.target); } }), { threshold: 0.12, rootMargin: "0px 0px -40px 0px" });
+    els.forEach((el) => io.observe(el));
+    return () => io.disconnect();
+  }, []);
   const [emailPrepared, setEmailPrepared] = useState(false);
   function prepareEmail(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -126,71 +141,43 @@ export default function Home() {
         )}
       </header>
       <main id="inhalt">
-        <section className="hero">
-          <div className="wrap hero-grid">
-            <div className="hero-copy">
-              <p className="eyebrow">
-                <span /> LADENBAU · INNENAUSBAU · RENOVIERUNGEN
-              </p>
-              <h1>
-                Ihre Vision.
-                <br />
-                Unser Handwerk.
-                <br />
-                <em>Neue Räume.</em>
-              </h1>
-              <p className="hero-lead">Von der Planung bis zur Fertigstellung.</p>
-              <p className="hero-description">
-                Erkan Catak verbindet 30 Jahre Erfahrung mit einem europaweiten Netzwerk. Für Räume,
-                die zu Ihnen passen – bis ins Detail.
-              </p>
-              <div className="hero-actions">
-                <a href="#kontakt" className="button">
-                  Ihr Projekt beginnt hier <ArrowUpRight size={19} />
-                </a>
-                <a href="#leistungen" className="text-link">
-                  Leistungen entdecken <ArrowRight size={17} />
-                </a>
-              </div>
-              <div className="hero-signature">
-                <span className="signature-line" />
-                <span>
-                  <strong>Erkan Catak</strong>
-                  <small>Ihr persönlicher Ansprechpartner</small>
-                </span>
-              </div>
+        <section className="banner" aria-label="ERCA – Ladenbau, Innenausbau, Renovierungen">
+          <div className="banner-media" aria-hidden="true">
+            <img src={heroBanner} alt="" width={1920} height={1088} fetchPriority="high" />
+          </div>
+          <div className="banner-shade" aria-hidden="true" />
+          <div className="wrap banner-inner">
+            <p className="eyebrow banner-eyebrow anim-in" style={{ animationDelay: "0.1s" }}>
+              <span /> LADENBAU · INNENAUSBAU · RENOVIERUNGEN
+            </p>
+            <h1 className="anim-in" style={{ animationDelay: "0.25s" }}>
+              Räume, die wirken.
+              <br />
+              <em>Von der Idee bis zur Übergabe.</em>
+            </h1>
+            <p className="banner-lead anim-in" style={{ animationDelay: "0.45s" }}>
+              30 Jahre Erfahrung, ein europaweites Netzwerk und ein persönlicher Ansprechpartner –
+              Erkan Catak begleitet Ihr Projekt von der ersten Skizze bis zum letzten Detail.
+            </p>
+            <div className="hero-actions anim-in" style={{ animationDelay: "0.6s" }}>
+              <a href="#kontakt" className="button">
+                Projekt unverbindlich anfragen <ArrowUpRight size={19} />
+              </a>
+              <a href="#leistungen" className="banner-link">
+                Leistungen ansehen <ArrowRight size={17} />
+              </a>
             </div>
-            <div className="hero-visual">
-              <div className="architecture-scene">
-                <img
-                  src="/interior-inspiration.jpg"
-                  alt="Heller Innenraum mit Holzlamellen, Glastrennwand und moderner Einrichtung – Inspirationsbild"
-                  width={1800}
-                  height={1200}
-                  fetchPriority="high"
-                />
-              </div>
-              <div className="experience-tag">
-                <strong>
-                  30<span>Jahre</span>
-                </strong>
-                <p>
-                  Erfahrung, die
-                  <br />
-                  Räume verändert.
-                </p>
-              </div>
-              <div className="visual-note">
-                <span>INSPIRATION / INNENAUSBAU</span>
-                <span>PLANEN. GESTALTEN. UMSETZEN.</span>
-              </div>
+            <div className="banner-stats anim-in" style={{ animationDelay: "0.8s" }}>
+              <div><strong>30</strong><span>Jahre Erfahrung</span></div>
+              <div><strong>3</strong><span>Schwerpunkte</span></div>
+              <div><strong>1</strong><span>Ansprechpartner</span></div>
             </div>
           </div>
           <BrandWave />
         </section>
         <section id="leistungen" className="section services-section">
           <div className="wrap">
-            <div className="section-heading">
+            <div className="section-heading reveal">
               <div>
                 <p className="eyebrow">01 / UNSERE LEISTUNGEN</p>
                 <h2>
@@ -200,51 +187,28 @@ export default function Home() {
                 </h2>
               </div>
               <p>
-                Wir bringen Planung, Ausbau und Einrichtung zusammen. Klar abgestimmt. Persönlich
-                begleitet.
+                Planung, Ausbau und Einrichtung aus einer Hand – klar abgestimmt und persönlich
+                begleitet. So bleibt Ihr Projekt übersichtlich, auch wenn viele Gewerke beteiligt sind.
               </p>
             </div>
-            <div className="service-list">
-              {services.map((service) => (
-                <article
-                  className={`service-row ${activeService === service.id ? "service-open" : ""}`}
-                  key={service.id}
-                >
-                  <h3>
-                    <button
-                      className="service-trigger"
-                      id={`${service.id}-trigger`}
-                      aria-expanded={activeService === service.id}
-                      aria-controls={`${service.id}-content`}
-                      onClick={() =>
-                        setActiveService(activeService === service.id ? null : service.id)
-                      }
-                    >
-                      <span className="service-number">{service.n}</span>
-                      <span>{service.title}</span>
-                      <span className="service-short">{service.lead}</span>
-                      <span className="service-icon">
-                        {activeService === service.id ? <Minus /> : <Plus />}
-                      </span>
-                    </button>
-                  </h3>
-                  <div
-                    id={`${service.id}-content`}
-                    role="region"
-                    aria-labelledby={`${service.id}-trigger`}
-                    hidden={activeService !== service.id}
-                    className="service-content"
-                  >
+            <div className="service-cards">
+              {services.map((service, i) => (
+                <article className="service-card reveal" style={{ transitionDelay: `${i * 0.12}s` }} key={service.id}>
+                  <div className="service-card-media">
+                    <img src={service.image} alt={service.alt} width={1200} height={912} loading="lazy" />
+                    <span className="service-card-number">{service.n}</span>
+                  </div>
+                  <div className="service-card-body">
+                    <h3>{service.title}</h3>
+                    <p className="service-card-lead">{service.lead}</p>
                     <p>{service.text}</p>
                     <ul>
                       {service.details.map((detail) => (
-                        <li key={detail}>
-                          <span /> {detail}
-                        </li>
+                        <li key={detail}><span /> {detail}</li>
                       ))}
                     </ul>
                     <a className="text-link" href="#kontakt">
-                      Projekt besprechen <ArrowUpRight size={18} />
+                      {service.title} anfragen <ArrowUpRight size={18} />
                     </a>
                   </div>
                 </article>
