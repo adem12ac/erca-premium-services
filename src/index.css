@@ -1313,3 +1313,4 @@ h2 {
  .banner-shade{background:linear-gradient(180deg,rgba(6,24,54,.85),rgba(10,50,108,.75))}
 }
 @media (prefers-reduced-motion: reduce){.reveal,.anim-in{opacity:1!important;transform:none!important}}
+.banner .button{white-space:nowrap}
