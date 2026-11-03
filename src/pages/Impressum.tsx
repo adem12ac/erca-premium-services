@@ -1,29 +1,25 @@
-const Impressum = () => (
-  <div className="pt-20">
-    <section className="py-20">
-      <div className="container max-w-3xl">
-        <h1 className="font-display text-4xl font-extrabold text-foreground">Impressum</h1>
-        <div className="mt-8 space-y-6 text-muted-foreground leading-relaxed">
-          <div>
-            <h2 className="font-display text-lg font-bold text-foreground">Angaben gemäß § 5 TMG</h2>
-            <p className="mt-2">ERCA Dienstleistungen<br/>Erkan Catak<br/>Juliusstraße 21<br/>45128 Essen</p>
-          </div>
-          <div>
-            <h2 className="font-display text-lg font-bold text-foreground">Kontakt</h2>
-            <p className="mt-2">Mobil: +49 152 1639 9326<br/>Telefon: +49 201 8416 7404<br/>E-Mail: info@erca-service.de</p>
-          </div>
-          <div>
-            <h2 className="font-display text-lg font-bold text-foreground">Haftung für Inhalte</h2>
-            <p className="mt-2">Als Diensteanbieter sind wir gemäß § 7 Abs.1 TMG für eigene Inhalte auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich. Nach §§ 8 bis 10 TMG sind wir als Diensteanbieter jedoch nicht verpflichtet, übermittelte oder gespeicherte fremde Informationen zu überwachen oder nach Umständen zu forschen, die auf eine rechtswidrige Tätigkeit hinweisen.</p>
-          </div>
-          <div>
-            <h2 className="font-display text-lg font-bold text-foreground">Haftung für Links</h2>
-            <p className="mt-2">Unser Angebot enthält Links zu externen Websites Dritter, auf deren Inhalte wir keinen Einfluss haben. Deshalb können wir für diese fremden Inhalte auch keine Gewähr übernehmen.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-  </div>
-);
+import { useLang } from "@/lib/i18n";
+
+const Impressum = () => {
+  const de = useLang().lang === "de";
+  return (
+    <div className="legal-page wrap">
+      <h1>{de ? "Impressum" : "Legal notice"}</h1>
+      <h2>{de ? "Angaben gemäß § 5 DDG" : "Information pursuant to § 5 DDG (German Digital Services Act)"}</h2>
+      <p>ERCA Dienstleistungen<br />{de ? "Inhaber" : "Owner"}: Erkan Catak<br />Juliusstraße 21<br />45128 Essen<br />{de ? "Deutschland" : "Germany"}</p>
+      <h2>{de ? "Kontakt" : "Contact"}</h2>
+      <p>{de ? "Telefon / WhatsApp" : "Phone / WhatsApp"}: <a href="tel:+4915212971388">+49 152 12971388</a><br />E-Mail: <a href="mailto:info@erca-service.de">info@erca-service.de</a></p>
+      <h2>{de ? "Verantwortlich für den Inhalt" : "Responsible for content"}</h2>
+      <p>Erkan Catak, Juliusstraße 21, 45128 Essen</p>
+      <h2>{de ? "Verbraucherstreitbeilegung" : "Consumer dispute resolution"}</h2>
+      <p>{de ? "Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen." : "We are neither willing nor obliged to participate in dispute resolution proceedings before a consumer arbitration board."}</p>
+      <h2>{de ? "Haftung für Inhalte" : "Liability for content"}</h2>
+      <p>{de ? "Als Diensteanbieter sind wir für eigene Inhalte auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich. Wir sind jedoch nicht verpflichtet, übermittelte oder gespeicherte fremde Informationen zu überwachen oder nach Umständen zu forschen, die auf eine rechtswidrige Tätigkeit hinweisen." : "As a service provider, we are responsible for our own content on these pages in accordance with general laws. However, we are not obliged to monitor transmitted or stored third-party information or to investigate circumstances that indicate illegal activity."}</p>
+      <h2>{de ? "Haftung für Links" : "Liability for links"}</h2>
+      <p>{de ? "Unser Angebot enthält Links zu externen Websites Dritter, auf deren Inhalte wir keinen Einfluss haben. Für diese fremden Inhalte übernehmen wir daher keine Gewähr." : "Our website contains links to external third-party websites over whose content we have no control. We therefore accept no liability for such external content."}</p>
+      {!de && <p className="legal-note">This English version is provided for convenience. The German version is legally binding.</p>}
+    </div>
+  );
+};
 
 export default Impressum;
