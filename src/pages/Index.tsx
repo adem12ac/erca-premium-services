@@ -22,6 +22,7 @@ import {
   Sofa,
 } from "lucide-react";
 import { Brand, BrandWave } from "../components/Brand";
+import { MapEmbed } from "../components/MapEmbed";
 
 const services = [
   {
@@ -476,6 +477,7 @@ export default function Home() {
               )}
             </form>
           </div>
+          <MapEmbed />
         </section>
       </main>
       <footer className="site-footer">
