@@ -4,6 +4,7 @@ import heroBanner from "@/assets/hero-banner.jpg";
 import imgLaden from "@/assets/service-ladenbau.jpg";
 import imgInnen from "@/assets/service-innenausbau.jpg";
 import imgReno from "@/assets/service-renovierungen.jpg";
+import imgNetwork from "@/assets/network-partners.jpg";
 import { useState, type FormEvent } from "react";
 import {
   ArrowUpRight,
@@ -13,6 +14,12 @@ import {
   Phone,
   Mail,
   MessageCircle,
+  Ear,
+  PencilRuler,
+  Handshake,
+  Hammer,
+  Users,
+  Sofa,
 } from "lucide-react";
 import { Brand, BrandWave } from "../components/Brand";
 
@@ -179,7 +186,7 @@ export default function Home() {
           <div className="wrap">
             <div className="section-heading reveal">
               <div>
-                <p className="eyebrow">01 / UNSERE LEISTUNGEN</p>
+                <p className="eyebrow">UNSERE LEISTUNGEN</p>
                 <h2>
                   Drei Schwerpunkte.
                   <br />
@@ -196,7 +203,6 @@ export default function Home() {
                 <article className="service-card reveal" style={{ transitionDelay: `${i * 0.12}s` }} key={service.id}>
                   <div className="service-card-media">
                     <img src={service.image} alt={service.alt} width={1200} height={912} loading="lazy" />
-                    <span className="service-card-number">{service.n}</span>
                   </div>
                   <div className="service-card-body">
                     <h3>{service.title}</h3>
@@ -231,7 +237,7 @@ export default function Home() {
               <span className="story-rule" />
             </div>
             <div className="story-copy">
-              <p className="eyebrow">02 / ERKAN CATAK & ERCA</p>
+              <p className="eyebrow">ERKAN CATAK & ERCA</p>
               <h2>
                 Erfahrung im Blick.
                 <br />
@@ -262,7 +268,7 @@ export default function Home() {
           <div className="wrap">
             <div className="section-heading">
               <div>
-                <p className="eyebrow">03 / UNSER NETZWERK</p>
+                <p className="eyebrow">UNSER NETZWERK</p>
                 <h2>
                   In Essen zu Hause.
                   <br />
@@ -275,19 +281,10 @@ export default function Home() {
               </p>
             </div>
             <div className="network-grid">
-              <div className="network-art" aria-hidden="true">
-                <span className="orbit orbit-one" />
-                <span className="orbit orbit-two" />
-                <span className="orbit orbit-three" />
-                <span className="network-center">
-                  ERCA<small>ESSEN</small>
-                </span>
-                <span className="network-dot dot-one" />
-                <span className="network-dot dot-two" />
-                <span className="network-dot dot-three" />
-                <span className="network-dot dot-four" />
-                <span className="network-label">EUROPAWEIT VERNETZT</span>
-              </div>
+              <figure className="network-photo">
+                <img src={imgNetwork} alt="Zwei Geschäftspartner reichen sich in einem hellen Verkaufsraum die Hand" width={1200} height={1200} loading="lazy" />
+                <figcaption>Europaweit vernetzt · Symbolbild</figcaption>
+              </figure>
               <div className="network-details">
                 {[
                   [
@@ -304,7 +301,7 @@ export default function Home() {
                   ],
                 ].map(([title, text], i) => (
                   <div key={title}>
-                    <span>0{i + 1}</span>
+                    <span className="icon-badge">{[<Users key="u" size={20} />, <Handshake key="h" size={20} />, <Sofa key="s" size={20} />][i]}</span>
                     <div>
                       <h3>{title}</h3>
                       <p>{text}</p>
@@ -319,7 +316,7 @@ export default function Home() {
           <div className="wrap">
             <div className="section-heading">
               <div>
-                <p className="eyebrow">04 / SO ARBEITEN WIR</p>
+                <p className="eyebrow">SO ARBEITEN WIR</p>
                 <h2>
                   Von der ersten Idee.
                   <br />
@@ -348,8 +345,8 @@ export default function Home() {
               ].map(([title, text], i) => (
                 <article key={title}>
                   <div className="process-index">
-                    <span>0{i + 1}</span>
-                    <ArrowRight size={20} />
+                    <span className="icon-badge">{[<Ear key="e" size={22} />, <PencilRuler key="p" size={22} />, <Handshake key="h" size={22} />, <Hammer key="m" size={22} />][i]}</span>
+                    {i < 3 && <ArrowRight size={20} />}
                   </div>
                   <h3>{title}</h3>
                   <p>{text}</p>
@@ -361,7 +358,7 @@ export default function Home() {
         <section id="kontakt" className="section contact-section">
           <div className="wrap contact-grid">
             <div>
-              <p className="eyebrow">05 / KONTAKT</p>
+              <p className="eyebrow">KONTAKT</p>
               <h2>
                 Ihr nächstes Projekt?
                 <br />
