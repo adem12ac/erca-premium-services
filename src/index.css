@@ -1340,3 +1340,15 @@ h2 {
 .map-placeholder p{font-size:12px;line-height:1.7;color:var(--muted);max-width:330px}
 @media (max-width:900px){.map-card{grid-template-columns:1fr}.map-frame{min-height:340px}}
 @media (max-width:760px){.map-card{margin-top:52px}.map-info{padding:30px 24px}.map-info h3{font-size:24px}.map-frame{min-height:280px}}
+
+/* WhatsApp float + language switch */
+.wa-float{position:fixed;right:20px;bottom:20px;z-index:60;display:inline-flex;align-items:center;gap:10px;padding:14px 20px 14px 16px;border-radius:999px;background:hsl(142 70% 36%);color:hsl(0 0% 100%);font-weight:700;text-decoration:none;box-shadow:0 10px 30px hsl(220 40% 10%/.25);transition:transform .25s ease,box-shadow .25s ease}
+.wa-float:hover{transform:translateY(-3px);box-shadow:0 16px 36px hsl(220 40% 10%/.3)}
+.wa-float:focus-visible{outline:3px solid var(--navy);outline-offset:3px}
+@media (max-width:640px){.wa-float{right:14px;bottom:14px;padding:14px}.wa-float span{display:none}}
+.lang-switch{display:inline-flex;border:1px solid var(--line);border-radius:999px;padding:3px;gap:2px}
+.lang-switch button{border:0;background:transparent;color:inherit;font:inherit;font-size:.78rem;font-weight:700;letter-spacing:.05em;padding:6px 10px;border-radius:999px;cursor:pointer}
+.lang-switch button[aria-pressed=true]{background:var(--navy);color:hsl(0 0% 100%)}
+.legal-actions{display:flex;align-items:center;gap:18px}
+.header-tools{display:flex;align-items:center;gap:14px}
+@media (max-width:900px){.header-tools .lang-switch{display:inline-flex}}
