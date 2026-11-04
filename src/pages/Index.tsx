@@ -178,7 +178,7 @@ export default function Home() {
               <em>{T("Von der Idee bis zur Übergabe.", "From idea to handover.")}</em>
             </h1>
             <p className="banner-lead anim-in" style={{ animationDelay: "0.45s" }}>
-              {T("30 {T("Jahre Erfahrung", "years of experience")}, ein europaweites Netzwerk und ein persönlicher {T("Ansprechpartner", "personal contact")} – Erkan Catak begleitet Ihr Projekt von der ersten Skizze bis zum letzten Detail.", "30 years of experience, a Europe-wide network and one personal contact – Erkan Catak guides your project from the first sketch to the last detail.")}
+              {T("30 Jahre Erfahrung, ein europaweites Netzwerk und ein persönlicher Ansprechpartner – Erkan Catak begleitet Ihr Projekt von der ersten Skizze bis zum letzten Detail.", "30 years of experience, a Europe-wide network and one personal contact – Erkan Catak guides your project from the first sketch to the last detail.")}
             </p>
             <div className="hero-actions anim-in" style={{ animationDelay: "0.6s" }}>
               <a href="#kontakt" className="button">
@@ -202,9 +202,9 @@ export default function Home() {
               <div>
                 <p className="eyebrow">{T("UNSERE LEISTUNGEN", "OUR SERVICES")}</p>
                 <h2>
-                  Drei {T("Schwerpunkte", "core services")}.
+                  {T("Drei Schwerpunkte.", "Three core services.")}
                   <br />
-                  Ein {T("Ansprechpartner", "personal contact")}.
+                  {T("Ein Ansprechpartner.", "One contact.")}
                 </h2>
               </div>
               <p>
@@ -296,7 +296,7 @@ export default function Home() {
                 {[
                   [
                     T("Kontakte, die verbinden.", "Contacts that connect."),
-                    "Langjährig gewachsene Beziehungen erleichtern die Abstimmung und bringen die richtigen {T("Ansprechpartner", "personal contact")} für {T("Ihr Vorhaben", "Your project")} zusammen.",
+                    T("Langjährig gewachsene Beziehungen erleichtern die Abstimmung und bringen die richtigen Ansprechpartner für Ihr Vorhaben zusammen.", "Long-standing relationships make coordination easier and bring the right people together for your project."),
                   ],
                   [
                     T("Partner, die ergänzen.", "Partners that complement."),
