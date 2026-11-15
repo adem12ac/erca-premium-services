@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route, Link, Navigate } from "react-router-dom";
 import { ScrollToTop } from "@/components/ScrollToTop";
 import { Brand } from "@/components/Brand";
 import { WhatsAppFloat } from "@/components/WhatsAppFloat";
+import { CookieBanner } from "@/components/CookieBanner";
 import { LangProvider, LangSwitch, useLang } from "@/lib/i18n";
 import Index from "./pages/Index";
 import Impressum from "./pages/Impressum";
@@ -18,5 +19,5 @@ export default function App() {
     <Route path="/impressum" element={<Legal><Impressum /></Legal>} />
     <Route path="/datenschutz" element={<Legal><Datenschutz /></Legal>} />
     <Route path="*" element={<Navigate to="/" replace />} />
-  </Routes><WhatsAppFloat /></BrowserRouter></LangProvider>;
+  </Routes><WhatsAppFloat /><CookieBanner /></BrowserRouter></LangProvider>;
 }

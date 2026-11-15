@@ -143,7 +143,7 @@ export const HeroSlider = () => {
                 {slides[current].cta} <ArrowRight className="h-4 w-4" />
               </Link>
               <a
-                href="tel:+4915212971388"
+                href="tel:+4915216399326"
                 className="inline-flex items-center justify-center gap-2 rounded-xl border-2 border-primary-foreground/25 px-6 py-3.5 font-semibold text-primary-foreground backdrop-blur-sm transition-colors hover:bg-primary-foreground/10 focus-visible:ring-2 focus-visible:ring-ring sm:px-7 sm:py-4"
               >
                 <Phone className="h-4 w-4" /> Jetzt anrufen

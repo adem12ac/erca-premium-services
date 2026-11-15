@@ -24,6 +24,8 @@ import {
 import { Brand, BrandWave } from "../components/Brand";
 import { MapEmbed } from "../components/MapEmbed";
 import { LangSwitch, useLang } from "@/lib/i18n";
+import { CONTACT, whatsappHref } from "@/lib/contact";
+import { openPrivacySettings } from "@/components/CookieBanner";
 
 const servicesDe = [
   {
@@ -113,8 +115,8 @@ export default function Home() {
       <div className="topline">
         <div className="wrap">
           <span>{T("ESSEN · EUROPAWEIT VERNETZT", "ESSEN · CONNECTED ACROSS EUROPE")}</span>
-          <a href="tel:+4915212971388">
-            +49 152 12971388 <ArrowUpRight size={13} />
+          <a href={CONTACT.phoneHref}>
+            {CONTACT.phoneDisplay} <ArrowUpRight size={13} />
           </a>
         </div>
       </div>
@@ -377,10 +379,10 @@ export default function Home() {
                 {T("Erkan Catak freut sich auf Ihre Ideen.", "Erkan Catak looks forward to your ideas.")}
               </p>
               <div className="contact-links">
-                <a href="tel:+4915212971388">
+                <a href={CONTACT.phoneHref}>
                   <Phone size={20} />
                   <span>
-                    <small>{T("Telefon & WhatsApp","Phone & WhatsApp")}</small>+49 152 12971388
+                    <small>{T("Telefon & WhatsApp","Phone & WhatsApp")}</small>{CONTACT.phoneDisplay}
                   </span>
                   <ArrowUpRight size={20} />
                 </a>
@@ -393,7 +395,7 @@ export default function Home() {
                 </a>
               </div>
               <a
-                href="https://wa.me/4915212971388"
+                href={whatsappHref(T("Hallo, ich möchte ein Projekt anfragen.", "Hello, I would like to enquire about a project."))}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="whatsapp-link"
@@ -494,6 +496,7 @@ export default function Home() {
           <div>
             <Link to="/impressum">{T("Impressum","Legal notice")}</Link>
             <Link to="/datenschutz">{T("Datenschutz","Privacy policy")}</Link>
+            <button type="button" onClick={openPrivacySettings}>{T("Cookie-Einstellungen", "Cookie settings")}</button>
             <a href="#">{T("Nach oben ↑", "Back to top ↑")}</a>
           </div>
         </div>

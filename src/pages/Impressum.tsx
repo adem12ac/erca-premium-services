@@ -8,7 +8,7 @@ const Impressum = () => {
       <h2>{de ? "Angaben gemäß § 5 DDG" : "Information pursuant to § 5 DDG (German Digital Services Act)"}</h2>
       <p>ERCA Dienstleistungen<br />{de ? "Inhaber" : "Owner"}: Erkan Catak<br />Juliusstraße 21<br />45128 Essen<br />{de ? "Deutschland" : "Germany"}</p>
       <h2>{de ? "Kontakt" : "Contact"}</h2>
-      <p>{de ? "Telefon / WhatsApp" : "Phone / WhatsApp"}: <a href="tel:+4915212971388">+49 152 12971388</a><br />E-Mail: <a href="mailto:info@erca-service.de">info@erca-service.de</a></p>
+      <p>{de ? "Telefon / WhatsApp" : "Phone / WhatsApp"}: <a href="tel:+4915216399326">+49 1521 6399326</a><br />E-Mail: <a href="mailto:info@erca-service.de">info@erca-service.de</a></p>
       <h2>{de ? "Verantwortlich für den Inhalt" : "Responsible for content"}</h2>
       <p>Erkan Catak, Juliusstraße 21, 45128 Essen</p>
       <h2>{de ? "Verbraucherstreitbeilegung" : "Consumer dispute resolution"}</h2>

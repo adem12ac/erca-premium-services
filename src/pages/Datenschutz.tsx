@@ -8,7 +8,7 @@ const Datenschutz = () => {
       <h2>{de ? "1. Datenschutz auf einen Blick" : "1. Privacy at a glance"}</h2>
       <p>{de ? "Die folgenden Hinweise geben einen einfachen Überblick darüber, was mit Ihren personenbezogenen Daten passiert, wenn Sie diese Website besuchen." : "The following notes give a simple overview of what happens to your personal data when you visit this website."}</p>
       <h2>{de ? "2. Verantwortlicher" : "2. Controller"}</h2>
-      <p>ERCA Dienstleistungen<br />Erkan Catak<br />Juliusstraße 21<br />45128 Essen<br />E-Mail: info@erca-service.de<br />{de ? "Telefon" : "Phone"}: +49 152 12971388</p>
+      <p>ERCA Dienstleistungen<br />Erkan Catak<br />Juliusstraße 21<br />45128 Essen<br />E-Mail: info@erca-service.de<br />{de ? "Telefon" : "Phone"}: +49 1521 6399326</p>
       <h2>{de ? "3. Anfrageformular" : "3. Enquiry form"}</h2>
       <p>{de ? "Das Anfrageformular erstellt lokal einen E-Mail-Entwurf in Ihrem E-Mail-Programm. Erst wenn Sie diesen absenden, erhalten wir Ihre Angaben und verwenden sie zur Bearbeitung Ihrer Anfrage (Art. 6 Abs. 1 lit. b DSGVO). Die Website selbst speichert keine Formulareingaben." : "The enquiry form creates an email draft locally in your email program. Only when you send it do we receive your details and use them to process your enquiry (Art. 6(1)(b) GDPR). The website itself does not store form entries."}</p>
       <h2>{de ? "4. Google Maps" : "4. Google Maps"}</h2>
@@ -17,7 +17,9 @@ const Datenschutz = () => {
       <p>{de ? "Über den WhatsApp-Button gelangen Sie zu WhatsApp (Meta Platforms Ireland Ltd.). Daten werden erst übertragen, wenn Sie den Button anklicken." : "The WhatsApp button takes you to WhatsApp (Meta Platforms Ireland Ltd.). Data is only transmitted once you click the button."}</p>
       <h2>{de ? "6. Spracheinstellung" : "6. Language setting"}</h2>
       <p>{de ? "Ihre gewählte Sprache wird ausschließlich lokal in Ihrem Browser gespeichert." : "Your chosen language is stored only locally in your browser."}</p>
-      <h2>{de ? "7. Ihre Rechte" : "7. Your rights"}</h2>
+      <h2>{de ? "7. Besucherstatistik" : "7. Visitor analytics"}</h2>
+      <p>{de ? "Wir zählen Besuche ohne Cookies. Seitenaufrufe, Verweildauer, Ladegeschwindigkeit und Fehler werden ohne Wiedererkennung gespeichert. Klicks werden nur gemessen, wenn Sie in den Cookie-Einstellungen der Analyse zustimmen. Sie können Ihre Auswahl jederzeit über „Cookie-Einstellungen“ im Seitenfuß ändern." : "We count visits without cookies. Page visits, time on page, loading speed and errors are stored without recognising returning visitors. Clicks are only measured if you accept analytics in the cookie settings. You can change your choice at any time via “Cookie settings” in the footer."}</p>
+      <h2>{de ? "8. Ihre Rechte" : "8. Your rights"}</h2>
       <p>{de ? "Sie haben das Recht auf Auskunft, Berichtigung, Löschung, Einschränkung der Verarbeitung, Datenübertragbarkeit und Widerspruch sowie ein Beschwerderecht bei einer Aufsichtsbehörde." : "You have the right to access, rectification, erasure, restriction of processing, data portability and objection, as well as the right to lodge a complaint with a supervisory authority."}</p>
       {!de && <p className="legal-note">This English version is provided for convenience. The German version is legally binding.</p>}
     </div>

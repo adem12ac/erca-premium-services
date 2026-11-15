@@ -41,12 +41,12 @@ export const Header = () => {
 
         <div className="hidden items-center gap-3 lg:flex">
           <a
-            href="tel:+4915212971388"
+            href="tel:+4915216399326"
             className="inline-flex items-center gap-2 rounded-lg bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground transition-all hover:opacity-90 focus-visible:ring-2 focus-visible:ring-ring"
-            aria-label="Jetzt anrufen: +49 152 1297 1388"
+            aria-label="Jetzt anrufen: +49 1521 6399326"
           >
             <Phone className="h-4 w-4" aria-hidden="true" />
-            Jetzt anrufen · +49 152 1297 1388
+            Jetzt anrufen · +49 1521 6399326
           </a>
         </div>
 
@@ -76,11 +76,11 @@ export const Header = () => {
               </Link>
             ))}
             <a
-              href="tel:+4915212971388"
+              href="tel:+4915216399326"
               className="mt-3 inline-flex items-center justify-center gap-2 rounded-lg bg-primary px-5 py-3.5 text-sm font-semibold text-primary-foreground"
             >
               <Phone className="h-4 w-4" aria-hidden="true" />
-              +49 152 1297 1388
+              +49 1521 6399326
             </a>
           </nav>
         </div>
